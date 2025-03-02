@@ -188,7 +188,7 @@ function App() {
               className="h-32 mx-auto mb-8"
             />
             <h1 className="text-5xl font-bold text-[#0F172A] mb-6">
-              La Solución #1 para<br />Gestión de Stock
+              La Solución #1 para<br />Gestión de tu Stock 
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               100% adaptable a tu tienda Shopify. Gestiona stock, perfiles, contrareembolsos y más. 
