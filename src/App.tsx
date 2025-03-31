@@ -146,9 +146,9 @@ function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
-      <nav className="fixed w-full bg-white/80 backdrop-blur-sm z-50 border-b">
+      <nav className="fixed w-full bg-black/80 backdrop-blur-sm z-50 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
@@ -159,17 +159,17 @@ function App() {
               />
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-gray-900">Características</a>
-              <a href="#pricing" className="text-gray-600 hover:text-gray-900">Precios</a>
+              <a href="#features" className="text-gray-300 hover:text-white">Características</a>
+              <a href="#pricing" className="text-gray-300 hover:text-white">Precios</a>
               <button 
                 onClick={() => setIsContactOpen(true)}
-                className="text-gray-600 hover:text-gray-900"
+                className="text-gray-300 hover:text-white"
               >
                 Contacto
               </button>
               <button 
                 onClick={() => setIsContactOpen(true)}
-                className="bg-[#0F172A] text-white px-4 py-2 rounded-lg hover:bg-[#1E293B]"
+                className="bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-200"
               >
                 Empezar
               </button>
@@ -187,21 +187,21 @@ function App() {
               alt="Stockify.pro Logo" 
               className="h-32 mx-auto mb-8"
             />
-            <h1 className="text-5xl font-bold text-[#0F172A] mb-6">
+            <h1 className="text-5xl font-bold text-white mb-6">
               La Solución #1 para<br />Gestión de tu Stock 
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
               100% adaptable a tu tienda Shopify. Gestiona stock, perfiles, contrareembolsos y más. 
               La plataforma más completa para la gestión de tu negocio online.
             </p>
             <div className="flex justify-center gap-4">
               <button 
                 onClick={() => setIsContactOpen(true)}
-                className="bg-[#0F172A] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#1E293B]"
+                className="bg-white text-black px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-200"
               >
                 Prueba Gratuita
               </button>
-              <button className="border border-[#0F172A] text-[#0F172A] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-50">
+              <button className="border border-white text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-white/10">
                 Ver Demo
               </button>
             </div>
@@ -219,7 +219,7 @@ function App() {
              <div className="flex justify-center items-center space-x-8">
                <p className="text-xl text-gray-600">Compañias de transporte integradas:</p>
              </div><div className="flex justify-center items-center space-x-8">
-              <img src="data:image/png;base64,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" alt="MRW" className="h-18" />
+              <img src="data:image/png;base64,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" alt="MRW" className="h-18" />
               <img src="https://bionsan.com/wp-content/uploads/2022/06/gls-logo-positive-rgb-download-11622.png" alt="GLS" className="h-8" />
               <img src="https://adeca.com/wp-content/sabai/File/files/l_36732be76f4086d8c47238a33ff3f05f.png" alt="Correos Express" className="h-10" />
             </div>
@@ -228,13 +228,13 @@ function App() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-gray-50">
+      <section id="features" className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
+            <h2 className="text-3xl font-bold text-white mb-4">
               Todo lo que Necesitas en Una Plataforma
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-gray-300">
               Gestión completa y profesional para tu negocio online
             </p>
           </div>
