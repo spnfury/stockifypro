@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { 
   Box, 
   Clock, 
@@ -18,6 +19,10 @@ import {
   ArrowRight
 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import Contrareembolso from './pages/servicios/Contrareembolso';
+import Perfiles from './pages/servicios/Perfiles';
+import Head from './components/Head';
+import { smoothScroll } from './utils/smoothScroll';
 
 function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -175,23 +180,45 @@ function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
 
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <div className="min-h-screen bg-white text-black">
+      <Head
+        title="Stockify.pro - La Solución #1 para Gestión de Stock y Contrareembolso"
+        description="100% adaptable a tu tienda Shopify. Gestiona stock, perfiles, contrareembolsos y más. La plataforma más completa para la gestión de tu negocio online."
+        keywords="gestión de stock, contrareembolso, ecommerce, shopify, crm, gestión de pedidos, automatización, seguimiento envíos"
+        ogTitle="Stockify.pro - La Plataforma Completa para tu eCommerce"
+        ogDescription="Gestiona stock, contrareembolsos, perfiles y más desde una única plataforma. La solución más completa para tu negocio online."
+      />
       {/* Navigation */}
       <nav className="fixed w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
-              <img 
-                src="https://app.stockify.pro/assets/img/logos/logo2024.png" 
-                alt="Stockify.pro Logo" 
-                className="h-8"
-              />
+              <Link to="/">
+                <img 
+                  src="https://app.stockify.pro/assets/img/logos/logo2024.png" 
+                  alt="Stockify.pro Logo" 
+                  className="h-8"
+                />
+              </Link>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-600 hover:text-[#0F172A]">Características</a>
-              <a href="#pricing" className="text-gray-600 hover:text-[#0F172A]">Precios</a>
+              <a 
+                href="#caracteristicas" 
+                onClick={smoothScroll}
+                className="text-gray-600 hover:text-[#0F172A]"
+              >
+                Características
+              </a>
+              <a 
+                href="#precios" 
+                onClick={smoothScroll}
+                className="text-gray-600 hover:text-[#0F172A]"
+              >
+                Precios
+              </a>
               <button 
                 onClick={() => setIsContactOpen(true)}
                 className="text-gray-600 hover:text-[#0F172A]"
@@ -209,227 +236,382 @@ function App() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <img 
-              src="https://app.stockify.pro/assets/img/logos/logo2024.png" 
-              alt="Stockify.pro Logo" 
-              className="h-32 mx-auto mb-8"
-            />
-            <h1 className="text-5xl font-bold text-[#0F172A] mb-6">
-              La Solución #1 para<br />Gestión de tu Stock 
-            </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              100% adaptable a tu tienda Shopify. Gestiona stock, perfiles, contrareembolsos y más. 
-              La plataforma más completa para la gestión de tu negocio online.
-            </p>
-            <div className="flex justify-center gap-4">
-              <button 
-                onClick={() => setIsContactOpen(true)}
-                className="bg-[#0F172A] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#1E293B]"
-              >
-                Prueba Gratuita
-              </button>
-              <button className="border border-[#0F172A] text-[#0F172A] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#0F172A]/10">
-                Ver Demo
-              </button>
-            </div>
-          </div>
-          <div className="mt-16 space-y-8">
-            <img 
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
-              alt="Vista previa del Dashboard"
-              className="rounded-xl shadow-xl"
-            />
-            <div className="flex justify-center items-center space-x-8">
-              Compatible 100%:<br></br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/512px-Shopify_logo_2018.svg.png" alt="Shopify" className="h-12" /><br></br>
-            </div>
-
-             <div className="flex justify-center items-center space-x-8">
-               <p className="text-xl text-gray-600">Compañias de transporte integradas:</p>
-             </div><div className="flex justify-center items-center space-x-8">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQwAAAC8CAMAAAC672BgAAABI1BMVEX///8cEkT/SUAbE0T//v/8//8cEkUVCkExLU4XED4AADD/SD4xLVA7N1cSDjwAADI7OU77X1n9XlL6WFcAADYAACr7SDsAADj/SEIwLUsAADEZDUb+RTgAADsAAC08OFUAACUMADsTCEQIAD/+PzQdEUkAACf43dvj4+YAACGmpa/y8fSDgZFHQmG2tMDZ1939vMH8YGUdF0ApJEh4do1lY3VdWXXR0NT47O30TFHzw8f01tv1nJ/2dHT3UUfwo6SalKBzcYP81tPzZF7yhoD3vLf89e3xioz1Nzz0tqxSUGIdGDb0IifyZWb0lI/xnKAlHUjwbnXyZVf3r6+KiJ2urbX4kpg9NWCFhI73l4v208n9QCz0ioLudnH1q7H2x8I0MkLMWaRIAAAI+ElEQVR4nO2aa3PaSBaGJaSWDG1CvOaiJIIY1DYOEJvEweCsjfGNEM/YyaztrCds1vv/f8X2RYD6IE1RtaPMfjhPVWoy3U2H86r73IRhIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCIAiCPKX8F/U/fTJGN57yQAAAABJRU5ErkJggg==" alt="MRW" className="h-18" />
-              <img src="https://bionsan.com/wp-content/uploads/2022/06/gls-logo-positive-rgb-download-11622.png" alt="GLS" className="h-8" />
-              <img src="https://adeca.com/wp-content/sabai/File/files/l_36732be76f4086d8c47238a33ff3f05f.png" alt="Correos Express" className="h-10" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Todo lo que Necesitas en Una Plataforma
-            </h2>
-            <p className="text-xl text-gray-600">
-              Gestión completa y profesional para tu negocio online
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <ShoppingCart className="h-8 w-8 text-[#0F172A]" />,
-                title: "Integración Total Shopify",
-                description: "Sincronización perfecta con tu tienda. Gestión de stock y pedidos en tiempo real."
-              },
-              {
-                icon: <UserCog className="h-8 w-8 text-[#0F172A]" />,
-                title: "Gestión de Perfiles",
-                description: "Confirmadores, administradores y gestores de tienda con roles personalizados."
-              },
-              {
-                icon: <Building2 className="h-8 w-8 text-[#0F172A]" />,
-                title: "Multi-almacén",
-                description: "Gestiona stock privado y general. Sistema de comisiones para distribuidores."
-              },
-              {
-                icon: <Truck className="h-8 w-8 text-[#0F172A]" />,
-                title: "Contrareembolso Avanzado",
-                description: "La mejor solución para gestionar pagos contra reembolso."
-              },
-              {
-                icon: <MessageSquareText className="h-8 w-8 text-[#0F172A]" />,
-                title: "IA para Atención",
-                description: "Sistema de confirmación y atención al cliente con inteligencia artificial."
-              },
-              {
-                icon: <BarChart4 className="h-8 w-8 text-[#0F172A]" />,
-                title: "Estadísticas y CRM",
-                description: "Control total de estadísticas y contabilidad. CRM completo incluido."
-              }
-            ].map((feature, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
-              Planes Adaptados a Tu Negocio
-            </h2>
-            <p className="text-xl text-gray-600 mb-8">
-              Soluciones flexibles que crecen contigo
-            </p>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto">
-            <div className="p-8 md:p-12 bg-gradient-to-r from-[#0F172A] to-[#1E293B] text-white">
-              <h3 className="text-3xl font-bold mb-4">Consulta nuestros planes personalizados</h3>
-              <p className="text-lg mb-6">
-                Ofrecemos soluciones a medida según el volumen de pedidos y las necesidades específicas de tu negocio.
-              </p>
-              <ul className="space-y-3 mb-8">
-                {[
-                  "Integración completa con Shopify",
-                  "Gestión avanzada de inventario",
-                  "Múltiples perfiles de usuario",
-                  "Sistema de contrareembolso",
-                  "Atención al cliente con IA",
-                  "Estadísticas y CRM incluidos"
-                ].map((feature, i) => (
-                  <li key={i} className="flex items-center">
-                    <CheckCircle2 className="h-5 w-5 text-green-400 mr-2 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button 
-                onClick={() => setIsContactOpen(true)}
-                className="mt-6 bg-white text-[#0F172A] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 flex items-center justify-center w-full md:w-auto"
-              >
-                Solicitar información <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
-            </div>
-            
-            <div className="p-8 md:p-12 bg-white">
-              <h4 className="text-xl font-semibold mb-6 text-[#0F172A]">¿Por qué elegir Stockify.pro?</h4>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h5 className="font-semibold mb-2 text-[#0F172A]">Escalabilidad</h5>
-                  <p className="text-gray-600">Nuestros planes se adaptan al crecimiento de tu negocio, pagando solo por lo que necesitas.</p>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={
+          <>
+            {/* Hero Section */}
+            <section className="pt-32 pb-20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center">
+                  <img 
+                    src="https://app.stockify.pro/assets/img/logos/logo2024.png" 
+                    alt="Stockify.pro Logo" 
+                    className="h-32 mx-auto mb-8"
+                  />
+                  <h1 className="text-5xl font-bold text-[#0F172A] mb-6">
+                    La Solución #1 para<br />Gestión de tu Stock 
+                  </h1>
+                  <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                    100% adaptable a tu tienda Shopify. Gestiona stock, perfiles, contrareembolsos y más. 
+                    La plataforma más completa para la gestión de tu negocio online.
+                  </p>
+                  <div className="flex justify-center gap-4">
+                    <button 
+                      onClick={() => setIsContactOpen(true)}
+                      className="bg-[#0F172A] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#1E293B]"
+                    >
+                      Prueba Gratuita
+                    </button>
+                    <a 
+                      href="https://app.stockify.pro/login"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border border-[#0F172A] text-[#0F172A] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#0F172A]/10"
+                    >
+                      Ver Demo
+                    </a>
+                  </div>
                 </div>
-                <div>
-                  <h5 className="font-semibold mb-2 text-[#0F172A]">Soporte Premium</h5>
-                  <p className="text-gray-600">Asistencia técnica personalizada para resolver cualquier duda o incidencia.</p>
-                </div>
-                <div>
-                  <h5 className="font-semibold mb-2 text-[#0F172A]">Sin Sorpresas</h5>
-                  <p className="text-gray-600">Precios transparentes sin costes ocultos ni comisiones adicionales.</p>
-                </div>
-                <div>
-                  <h5 className="font-semibold mb-2 text-[#0F172A]">Prueba Gratuita</h5>
-                  <p className="text-gray-600">Prueba nuestra plataforma sin compromiso y descubre todo su potencial.</p>
+                <div className="mt-16 space-y-8">
+                  <img 
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                    alt="Vista previa del Dashboard"
+                    className="rounded-xl shadow-xl"
+                  />
+                  <div className="flex justify-center items-center space-x-8">
+                    Compatible 100%:<br></br><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/512px-Shopify_logo_2018.svg.png" alt="Shopify" className="h-12" /><br></br>
+                  </div>
+
+                   <div className="flex justify-center items-center space-x-8">
+                     <p className="text-xl text-gray-600">Compañias de transporte integradas:</p>
+                   </div>
+                   <div className="relative w-full overflow-hidden bg-white p-8 rounded-lg">
+                     <div className="flex animate-infinite-scroll space-x-12">
+                       <img src="https://www.vectorlogo.es/wp-content/uploads/2017/02/logo-vector-mrw.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1" alt="MRW" className="h-16 object-contain" />
+                       <img src="https://www.vectorlogo.es/wp-content/uploads/2020/08/logo-vector_gls.jpg?ezimgfmt=rs:630x320/rscb1/ngcb1/notWebP" alt="GLS" className="h-16 object-contain" />
+                       <img src="https://www.vectorlogo.es/wp-content/uploads/2019/04/logo-vector-correos-express.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1" alt="Correos Express" className="h-16 object-contain" />
+                       <img src="https://images.seeklogo.com/logo-png/18/1/nacex-logo-png_seeklogo-187594.png?v=1955407053922058392" alt="NACEX" className="h-16 object-contain" />
+                       <img src="https://www.vectorlogo.es/wp-content/uploads/2019/11/logo-vector-tipsa.jpg" alt="TIPSA" className="h-16 object-contain" />
+                       {/* Duplicate logos for seamless scrolling */}
+                       <img src="https://www.vectorlogo.es/wp-content/uploads/2017/02/logo-vector-mrw.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1" alt="MRW" className="h-16 object-contain" />
+                       <img src="https://www.vectorlogo.es/wp-content/uploads/2020/08/logo-vector_gls.jpg?ezimgfmt=rs:630x320/rscb1/ngcb1/notWebP" alt="GLS" className="h-16 object-contain" />
+                       <img src="https://www.vectorlogo.es/wp-content/uploads/2019/04/logo-vector-correos-express.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1" alt="Correos Express" className="h-16 object-contain" />
+                       <img src="https://images.seeklogo.com/logo-png/18/1/nacex-logo-png_seeklogo-187594.png?v=1955407053922058392" alt="NACEX" className="h-16 object-contain" />
+                       <img src="https://www.vectorlogo.es/wp-content/uploads/2019/11/logo-vector-tipsa.jpg" alt="TIPSA" className="h-16 object-contain" />
+                     </div>
+                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0F172A] text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center mb-4">
-                <img 
-                  src="https://app.stockify.pro/assets/img/logos/logo2024.png" 
-                  alt="Stockify.pro Logo" 
-                  className="h-8"
-                />
+            {/* Features & Benefits Section */}
+            <section id="caracteristicas" className="py-20 bg-gray-50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
+                    Todo lo que Necesitas para Gestionar Contrareembolsos
+                  </h2>
+                  <p className="text-xl text-gray-600">
+                    La solución más completa para optimizar tu negocio de eCommerce
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {[
+                    {
+                      icon: <ShoppingCart className="h-8 w-8 text-[#0F172A]" />,
+                      title: "Gestión Automatizada de Contrareembolsos",
+                      description: "Automatiza el proceso completo de contrareembolso, desde el pedido hasta el cobro final.",
+                      benefits: [
+                        "Reducción del 70% en tiempo de gestión",
+                        "Automatización de cobros",
+                        "Seguimiento en tiempo real"
+                      ],
+                      link: "/servicios/contrareembolso"
+                    },
+                    {
+                      icon: <UserCog className="h-8 w-8 text-[#0F172A]" />,
+                      title: "Gestión de Perfiles Avanzada",
+                      description: "Sistema de roles personalizados para confirmadores, administradores y gestores.",
+                      benefits: [
+                        "Control total de accesos",
+                        "Asignación de responsabilidades",
+                        "Auditoría de acciones"
+                      ],
+                      link: "/servicios/perfiles"
+                    },
+                    {
+                      icon: <Building2 className="h-8 w-8 text-[#0F172A]" />,
+                      title: "Multi-almacén Inteligente",
+                      description: "Gestiona stock privado y general con sistema de comisiones para distribuidores.",
+                      benefits: [
+                        "Optimización de inventario",
+                        "Reducción de costes en 40%",
+                        "Seguimiento multi-ubicación"
+                      ],
+                      link: "/servicios/almacen"
+                    },
+                    {
+                      icon: <Truck className="h-8 w-8 text-[#0F172A]" />,
+                      title: "Integración con Transportistas",
+                      description: "Conecta con las principales empresas de transporte para seguimiento automático.",
+                      benefits: [
+                        "Seguimiento en tiempo real",
+                        "Automatización de envíos",
+                        "Reducción de incidencias"
+                      ],
+                      link: "/servicios/transportistas"
+                    },
+                    {
+                      icon: <MessageSquareText className="h-8 w-8 text-[#0F172A]" />,
+                      title: "IA para Atención al Cliente",
+                      description: "Sistema de confirmación y atención al cliente con inteligencia artificial.",
+                      benefits: [
+                        "Respuestas instantáneas",
+                        "Reducción de carga de trabajo",
+                        "Mejora en satisfacción cliente"
+                      ],
+                      link: "/servicios/ia"
+                    },
+                    {
+                      icon: <BarChart4 className="h-8 w-8 text-[#0F172A]" />,
+                      title: "Estadísticas y CRM Avanzado",
+                      description: "Control total de estadísticas y contabilidad con CRM completo incluido.",
+                      benefits: [
+                        "Informes personalizados",
+                        "Análisis predictivo",
+                        "Gestión de clientes"
+                      ],
+                      link: "/servicios/analitica"
+                    }
+                  ].map((feature, index) => (
+                    <div 
+                      key={index} 
+                      className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-all"
+                    >
+                      <div className="mb-4">{feature.icon}</div>
+                      <h3 className="text-xl font-semibold mb-2 text-[#0F172A]">{feature.title}</h3>
+                      <p className="text-gray-600 mb-4">{feature.description}</p>
+                      <ul className="space-y-2">
+                        {feature.benefits.map((benefit, i) => (
+                          <li key={i} className="flex items-center text-sm text-gray-600">
+                            <CheckCircle2 className="h-4 w-4 text-green-500 mr-2" />
+                            {benefit}
+                          </li>
+                        ))}
+                      </ul>
+                      <Link 
+                        to={feature.link}
+                        className="mt-4 flex items-center text-[#0F172A] font-medium hover:text-blue-600"
+                      >
+                        <span>Ver más detalles</span>
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-16 text-center">
+                  <button 
+                    onClick={() => setIsContactOpen(true)}
+                    className="bg-[#0F172A] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#1E293B]"
+                  >
+                    Solicitar Demo Personalizada
+                  </button>
+                </div>
               </div>
-              <p className="text-gray-400">
-                La solución más completa para la gestión de tu negocio online
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Producto</h4>
-              <ul className="space-y-2">
-                <li><a href="#features" className="text-gray-400 hover:text-white">Características</a></li>
-                <li><a href="#pricing" className="text-gray-400 hover:text-white">Precios</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">API</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Empresa</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white">Sobre nosotros</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Blog</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Empleo</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-gray-400 hover:text-white">Privacidad</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Términos</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white">Seguridad</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>© 2024-2025 Stockify.pro. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
+            </section>
+
+            {/* Video Section */}
+            <section className="py-20 bg-gray-50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
+                    Descubre Stockify en Acción
+                  </h2>
+                  <p className="text-xl text-gray-600">
+                    Mira cómo nuestra plataforma puede transformar tu negocio
+                  </p>
+                </div>
+
+                <div className="relative aspect-video max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/Vf_RXK5Z7tQ"
+                    title="Stockify Demo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0"
+                  ></iframe>
+                </div>
+
+                <div className="mt-12 text-center">
+                  <button 
+                    onClick={() => setIsContactOpen(true)}
+                    className="bg-[#0F172A] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#1E293B]"
+                  >
+                    Solicitar Demo Personalizada
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            {/* Pricing Section */}
+            <section id="precios" className="py-20 bg-gradient-to-b from-white to-gray-50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-center mb-16">
+                  <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
+                    Planes Adaptados a Tu Negocio
+                  </h2>
+                  <p className="text-xl text-gray-600 mb-8">
+                    Soluciones flexibles que crecen contigo
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {[
+                    {
+                      name: "Basic",
+                      price: "299",
+                      limit: "Hasta 1.000 envíos",
+                      features: [
+                        "Soporte por email",
+                        "Panel de control",
+                        "Actualizaciones cada 15 min"
+                      ],
+                      isPopular: false,
+                      ctaText: "Empezar ahora"
+                    },
+                    {
+                      name: "Standard",
+                      price: "399",
+                      limit: "Hasta 10.000 envíos",
+                      features: [
+                        "Soporte prioritario",
+                        "Estadísticas avanzadas",
+                        "Webhooks personalizados"
+                      ],
+                      isPopular: true,
+                      ctaText: "Empezar ahora"
+                    },
+                    {
+                      name: "Premium",
+                      price: "499",
+                      limit: "Hasta 50.000 envíos",
+                      features: [
+                        "Integraciones avanzadas",
+                        "Acceso anticipado a nuevas funciones",
+                        "Soporte técnico directo"
+                      ],
+                      isPopular: false,
+                      ctaText: "Empezar ahora"
+                    },
+                    {
+                      name: "Enterprise",
+                      price: "A medida",
+                      limit: "Envíos ilimitados",
+                      features: [
+                        "SLA dedicado",
+                        "Onboarding personalizado",
+                        "Integraciones a medida",
+                        "Soporte 24/7"
+                      ],
+                      isPopular: false,
+                      ctaText: "Contactar"
+                    }
+                  ].map((plan, index) => (
+                    <div key={index} className={`bg-white rounded-2xl shadow-xl overflow-hidden ${
+                      plan.isPopular ? 'ring-2 ring-[#0F172A] transform scale-105' : ''
+                    }`}>
+                      <div className="p-8">
+                        <h3 className="text-2xl font-bold text-[#0F172A] mb-2">{plan.name}</h3>
+                        <div className="mb-4">
+                          <span className="text-4xl font-bold text-[#0F172A]">{plan.price}</span>
+                          {plan.price !== "A medida" && <span className="text-gray-600">€/mes</span>}
+                        </div>
+                        <p className="text-gray-600 mb-6">{plan.limit}</p>
+                        <ul className="space-y-3 mb-8">
+                          {plan.features.map((feature, i) => (
+                            <li key={i} className="flex items-center">
+                              <CheckCircle2 className="h-5 w-5 text-green-500 mr-2" />
+                              <span className="text-gray-600">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <button 
+                          onClick={() => setIsContactOpen(true)}
+                          className={`w-full px-6 py-3 rounded-lg font-semibold ${
+                            plan.isPopular 
+                              ? 'bg-[#0F172A] text-white hover:bg-[#1E293B]' 
+                              : 'border-2 border-[#0F172A] text-[#0F172A] hover:bg-[#0F172A]/5'
+                          }`}
+                        >
+                          {plan.ctaText}
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </>
+        } />
+        <Route path="/servicios/contrareembolso" element={<Contrareembolso />} />
+        <Route path="/servicios/perfiles" element={<Perfiles />} />
+      </Routes>
 
       {/* Contact Form Modal */}
       <ContactForm 
         isOpen={isContactOpen} 
         onClose={() => setIsContactOpen(false)} 
       />
+
+      {/* Footer */}
+      <footer className="bg-[#0F172A] text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <img 
+                src="https://app.stockify.pro/assets/img/logos/logo2024.png" 
+                alt="Stockify.pro Logo" 
+                className="h-8 mb-4"
+              />
+              <p className="text-gray-300">
+                La solución más completa para la gestión de tu negocio online.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Servicios</h3>
+              <ul className="space-y-2">
+                <li><Link to="/servicios/contrareembolso" className="text-gray-300 hover:text-white">Contrareembolso</Link></li>
+                <li><Link to="/servicios/perfiles" className="text-gray-300 hover:text-white">Perfiles</Link></li>
+                <li><Link to="/servicios/almacen" className="text-gray-300 hover:text-white">Almacén</Link></li>
+                <li><Link to="/servicios/transportistas" className="text-gray-300 hover:text-white">Transportistas</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Empresa</h3>
+              <ul className="space-y-2">
+                <li><Link to="/sobre-nosotros" className="text-gray-300 hover:text-white">Sobre Nosotros</Link></li>
+                <li><Link to="/contacto" className="text-gray-300 hover:text-white">Contacto</Link></li>
+                <li><Link to="/blog" className="text-gray-300 hover:text-white">Blog</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2">
+                <li><Link to="/privacidad" className="text-gray-300 hover:text-white">Política de Privacidad</Link></li>
+                <li><Link to="/terminos" className="text-gray-300 hover:text-white">Términos y Condiciones</Link></li>
+                <li><Link to="/cookies" className="text-gray-300 hover:text-white">Política de Cookies</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-700 text-center text-gray-300">
+            <p>&copy; {new Date().getFullYear()} Stockify.pro. Todos los derechos reservados.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
