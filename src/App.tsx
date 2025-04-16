@@ -21,8 +21,11 @@ import {
 import emailjs from '@emailjs/browser';
 import Contrareembolso from './pages/servicios/Contrareembolso';
 import Perfiles from './pages/servicios/Perfiles';
+import Privacidad from './pages/Privacidad';
+import Cookies from './pages/Cookies';
+import Terminos from './pages/Terminos';
+import SobreNosotros from './pages/SobreNosotros';
 import Head from './components/Head';
-import { smoothScroll } from './utils/smoothScroll';
 
 function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -154,7 +157,7 @@ function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                 className="mt-1 mr-2"
               />
               <label htmlFor="privacy" className="text-sm text-gray-600">
-                Acepto la <a href="#" className="text-blue-600 hover:underline">política de privacidad</a> y el procesamiento de mis datos para recibir información comercial.
+                Acepto la <Link to="/privacidad" className="text-blue-600 hover:underline">política de privacidad</Link> y el procesamiento de mis datos para recibir información comercial.
               </label>
             </div>
             {submitStatus && (
@@ -205,20 +208,8 @@ function App() {
               </Link>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a 
-                href="#caracteristicas" 
-                onClick={smoothScroll}
-                className="text-gray-600 hover:text-[#0F172A]"
-              >
-                Características
-              </a>
-              <a 
-                href="#precios" 
-                onClick={smoothScroll}
-                className="text-gray-600 hover:text-[#0F172A]"
-              >
-                Precios
-              </a>
+              <Link to="#features" className="text-gray-600 hover:text-[#0F172A]">Características</Link>
+              <Link to="#pricing" className="text-gray-600 hover:text-[#0F172A]">Precios</Link>
               <button 
                 onClick={() => setIsContactOpen(true)}
                 className="text-gray-600 hover:text-[#0F172A]"
@@ -305,7 +296,7 @@ function App() {
             </section>
 
             {/* Features & Benefits Section */}
-            <section id="caracteristicas" className="py-20 bg-gray-50">
+            <section id="features" className="py-20 bg-gray-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
@@ -438,7 +429,7 @@ function App() {
                   <iframe
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/embed/Vf_RXK5Z7tQ"
+                    src="https://www.youtube.com/embed/hQCeq4bMSs0"
                     title="Stockify Demo"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -458,7 +449,7 @@ function App() {
             </section>
 
             {/* Pricing Section */}
-            <section id="precios" className="py-20 bg-gradient-to-b from-white to-gray-50">
+            <section id="pricing" className="py-20 bg-gradient-to-b from-white to-gray-50">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                   <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
@@ -559,6 +550,10 @@ function App() {
         } />
         <Route path="/servicios/contrareembolso" element={<Contrareembolso />} />
         <Route path="/servicios/perfiles" element={<Perfiles />} />
+        <Route path="/privacidad" element={<Privacidad />} />
+        <Route path="/cookies" element={<Cookies />} />
+        <Route path="/terminos" element={<Terminos />} />
+        <Route path="/sobre-nosotros" element={<SobreNosotros />} />
       </Routes>
 
       {/* Contact Form Modal */}
