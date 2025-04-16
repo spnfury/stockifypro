@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { 
   Box, 
@@ -21,10 +21,12 @@ import {
 import emailjs from '@emailjs/browser';
 import Contrareembolso from './pages/servicios/Contrareembolso';
 import Perfiles from './pages/servicios/Perfiles';
+import Transportistas from './pages/servicios/Transportistas';
 import Privacidad from './pages/Privacidad';
 import Cookies from './pages/Cookies';
 import Terminos from './pages/Terminos';
 import SobreNosotros from './pages/SobreNosotros';
+import Almacen from './pages/Almacen';
 import Head from './components/Head';
 
 function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
@@ -185,6 +187,19 @@ function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const location = useLocation();
 
+  // Escuchar el evento personalizado desde componentes hijos
+  useEffect(() => {
+    const handleOpenContactForm = () => {
+      setIsContactOpen(true);
+    };
+
+    window.addEventListener('openContactForm', handleOpenContactForm);
+    
+    return () => {
+      window.removeEventListener('openContactForm', handleOpenContactForm);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-black">
       <Head
@@ -208,19 +223,13 @@ function App() {
               </Link>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <Link to="#features" className="text-gray-600 hover:text-[#0F172A]">Características</Link>
-              <Link to="#pricing" className="text-gray-600 hover:text-[#0F172A]">Precios</Link>
-              <button 
-                onClick={() => setIsContactOpen(true)}
-                className="text-gray-600 hover:text-[#0F172A]"
-              >
-                Contacto
-              </button>
+              <a href="/#features" className="text-gray-600 hover:text-[#0F172A]">Características</a>
+              <a href="/#pricing" className="text-gray-600 hover:text-[#0F172A]">Precios</a>
               <button 
                 onClick={() => setIsContactOpen(true)}
                 className="bg-[#0F172A] text-white px-4 py-2 rounded-lg hover:bg-[#1E293B]"
               >
-                Empezar
+                Empezar ahora
               </button>
             </div>
           </div>
@@ -550,6 +559,8 @@ function App() {
         } />
         <Route path="/servicios/contrareembolso" element={<Contrareembolso />} />
         <Route path="/servicios/perfiles" element={<Perfiles />} />
+        <Route path="/servicios/almacen" element={<Almacen />} />
+        <Route path="/servicios/transportistas" element={<Transportistas />} />
         <Route path="/privacidad" element={<Privacidad />} />
         <Route path="/cookies" element={<Cookies />} />
         <Route path="/terminos" element={<Terminos />} />
@@ -589,8 +600,7 @@ function App() {
               <h3 className="text-lg font-semibold mb-4">Empresa</h3>
               <ul className="space-y-2">
                 <li><Link to="/sobre-nosotros" className="text-gray-300 hover:text-white">Sobre Nosotros</Link></li>
-                <li><Link to="/contacto" className="text-gray-300 hover:text-white">Contacto</Link></li>
-                <li><Link to="/blog" className="text-gray-300 hover:text-white">Blog</Link></li>
+                <li><button onClick={() => setIsContactOpen(true)} className="text-gray-300 hover:text-white bg-transparent border-0 p-0 cursor-pointer">Contacto</button></li>
               </ul>
             </div>
             <div>

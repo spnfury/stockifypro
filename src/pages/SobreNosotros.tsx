@@ -3,6 +3,13 @@ import Head from '../components/Head';
 import { Building2, Users, Shield, Award, Target, ArrowRight } from 'lucide-react';
 
 function SobreNosotros() {
+  // Función para abrir el formulario de contacto en App.tsx
+  const openContactForm = () => {
+    // Crear un evento personalizado que será capturado en App.tsx
+    const event = new CustomEvent('openContactForm');
+    window.dispatchEvent(event);
+  };
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <Head
@@ -383,7 +390,7 @@ function SobreNosotros() {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Únete a los cientos de negocios que ya han optimizado su gestión con Stockify.pro
           </p>
-          <button className="bg-white text-[#0F172A] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 inline-flex items-center">
+          <button className="bg-white text-[#0F172A] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 inline-flex items-center" onClick={openContactForm}>
             Solicitar Demo Gratuita
             <ArrowRight className="ml-2 h-5 w-5" />
           </button>
