@@ -200,6 +200,11 @@ function App() {
     };
   }, []);
 
+  // Scroll al principio cuando cambia la ruta
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen bg-white text-black">
       <Head
