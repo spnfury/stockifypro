@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft, Eye } from 'lucide-react';
 import { Article } from '../../types/article';
@@ -10,9 +10,14 @@ interface BlogPostProps {
 }
 
 const BlogPost: React.FC<BlogPostProps> = ({ article, onViewCountUpdate }) => {
+  const hasIncremented = useRef(false);
+
   useEffect(() => {
-    // Incrementar el contador de visitas cuando se carga el artículo
-    onViewCountUpdate(article.id);
+    // Solo incrementar el contador si no se ha incrementado en esta sesión
+    if (!hasIncremented.current) {
+      onViewCountUpdate(article.id);
+      hasIncremented.current = true;
+    }
   }, [article.id, onViewCountUpdate]);
 
   return (
@@ -45,28 +50,28 @@ const BlogPost: React.FC<BlogPostProps> = ({ article, onViewCountUpdate }) => {
           )}
 
           <header className="mb-8">
-            <h1 className="text-3xl font-bold text-[#0F172A] mb-4">
+            <h1 className="text-3xl font-bold text-[#0F172A] mb-6">
               {article.title}
             </h1>
-            <div className="flex items-center justify-between text-sm text-gray-500">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4" />
-                <span>{new Date(article.createdAt).toLocaleDateString()}</span>
-              </div>
+            <div className="flex items-center justify-between text-sm text-gray-500 bg-gray-50 p-4 rounded-lg">
               <div className="flex items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4" />
+                  <span>{new Date(article.createdAt).toLocaleDateString()}</span>
+                </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4" />
                   <span>{Math.ceil(article.content.length / 200)} min lectura</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Eye className="h-4 w-4" />
-                  <span>{article.viewCount} visitas</span>
-                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <Eye className="h-4 w-4" />
+                <span>{article.viewCount} visitas</span>
               </div>
             </div>
           </header>
 
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none mt-8">
             {article.content.split('\n').map((paragraph, index) => (
               <p key={index} className="mb-4">
                 {paragraph}
