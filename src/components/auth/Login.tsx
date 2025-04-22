@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthProvider';
 import { Lock, Mail } from 'lucide-react';
 
@@ -7,14 +8,18 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { login } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    try {
-      await login(email, password);
-    } catch (error) {
+    if (login(email, password)) {
+      // Redirigir a la página de admin/blog o a la página desde donde vino
+      const from = (location.state as any)?.from?.pathname || '/admin/blog';
+      navigate(from, { replace: true });
+    } else {
       setError('Credenciales inválidas. Por favor, inténtalo de nuevo.');
     }
   };

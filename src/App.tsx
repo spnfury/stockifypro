@@ -36,6 +36,7 @@ import BlogPost from './components/blog/BlogPost';
 import { AuthProvider } from './components/auth/AuthProvider';
 import Login from './components/auth/Login';
 import { Article, Category } from './types/article';
+import { ProtectedRoute } from './components/ProtectedRoute';
 
 function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -704,8 +705,12 @@ function App() {
               onViewCountUpdate={handleViewCountUpdate}
             />
           } />
-          <Route path="/admin/login" element={<Login />} />
-          <Route path="/admin/blog" element={<BlogAdmin articles={articles} setArticles={setArticles} />} />
+          <Route path="/admin" element={<Login />} />
+          <Route path="/admin/blog" element={
+            <ProtectedRoute>
+              <BlogAdmin articles={articles} setArticles={setArticles} />
+            </ProtectedRoute>
+          } />
         </Routes>
 
         {/* Contact Form Modal */}
