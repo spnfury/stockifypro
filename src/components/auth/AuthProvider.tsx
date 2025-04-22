@@ -26,7 +26,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = (password: string): boolean => {
-    // Aquí deberías usar una contraseña segura y encriptada en producción
+    // Contraseña de administración
     if (password === 'Stockify2024!') {
       setUser(true);
       localStorage.setItem('admin_authenticated', 'true');
