@@ -1,95 +1,48 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-interface User {
-  id: string;
-  email: string;
-  name: string;
-}
 
 interface AuthContextType {
-  user: User | null;
-  isAuthenticated: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  user: boolean;
+  login: (password: string) => boolean;
   logout: () => void;
-  loading: boolean;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType>({
+  user: false,
+  login: () => false,
+  logout: () => {},
+});
+
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  const [user, setUser] = useState<boolean>(false);
 
   useEffect(() => {
-    // Verificar si hay un usuario autenticado al cargar la aplicación
-    const checkAuth = async () => {
-      try {
-        const storedUser = localStorage.getItem('user');
-        const token = localStorage.getItem('authToken');
-        
-        if (storedUser && token) {
-          // Aquí iría la verificación del token con el backend
-          // Por ahora solo restauramos el usuario almacenado
-          setUser(JSON.parse(storedUser));
-        }
-      } catch (error) {
-        console.error('Error al verificar autenticación:', error);
-        // Si hay un error, limpiamos el almacenamiento local
-        localStorage.removeItem('user');
-        localStorage.removeItem('authToken');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    checkAuth();
+    // Verificar si hay un usuario autenticado en localStorage al cargar
+    const storedUser = localStorage.getItem('admin_authenticated');
+    if (storedUser === 'true') {
+      setUser(true);
+    }
   }, []);
 
-  const login = async (email: string, password: string) => {
-    try {
-      // Aquí iría la llamada al backend para autenticar
-      // Por ahora simulamos una autenticación exitosa
-      if (email === 'admin@stockify.pro' && password === 'StockifyPro2024!@#') {
-        const user = {
-          id: '1',
-          email: 'admin@stockify.pro',
-          name: 'Administrador'
-        };
-        setUser(user);
-        // Guardamos tanto el usuario como el token
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('authToken', 'dummy-token');
-        navigate('/admin/blog');
-      } else {
-        throw new Error('Credenciales inválidas');
-      }
-    } catch (error) {
-      console.error('Error al iniciar sesión:', error);
-      throw error;
+  const login = (password: string): boolean => {
+    // Aquí deberías usar una contraseña segura y encriptada en producción
+    if (password === 'Stockify2024!') {
+      setUser(true);
+      localStorage.setItem('admin_authenticated', 'true');
+      return true;
     }
+    return false;
   };
 
   const logout = () => {
-    setUser(null);
-    // Limpiamos tanto el usuario como el token
-    localStorage.removeItem('user');
-    localStorage.removeItem('authToken');
-    navigate('/');
+    setUser(false);
+    localStorage.removeItem('admin_authenticated');
   };
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, logout, loading }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
-};
-
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth debe ser usado dentro de un AuthProvider');
-  }
-  return context;
 }; 
