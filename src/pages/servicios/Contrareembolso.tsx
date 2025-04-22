@@ -25,9 +25,9 @@ const Contrareembolso: React.FC = () => {
   return (
     <>
       <Head
-        title="Contrareembolso | Stockify.pro - Gestión Integral de Pagos Contra Reembolso"
+        title="Contrareembolso | Stockify.pro - CRM especializado en ecommerce con pago contra reembolso"
         description="Sistema CRM especializado en contrareembolso para ecommerce. Automatiza la gestión de pagos contra reembolso, seguimiento de envíos y cobros. Integración con Shopify y principales transportistas."
-        keywords="crm contrareembolso, gestión contrareembolso, sistema contrareembolso, cobro contrareembolso, ecommerce contrareembolso, shopify contrareembolso, gestión de pagos, seguimiento envíos, automatización cobros"
+        keywords="crm contrareembolso, gestión contrareembolso, sistema contrareembolso, cobro contrareembolso, ecommerce contrareembolso, shopify contrareembolso, gestión de pagos, seguimiento envíos, automatización cobros, CRM para tiendas online, gestión de pedidos ecommerce, automatización de envíos, etiquetas de envío, confirmación de pedidos, estadísticas de ventas, integración con Shopify, gestión de contra reembolso"
         ogTitle="Sistema CRM de Contrareembolso para eCommerce"
         ogDescription="Automatiza la gestión de pagos contra reembolso, seguimiento de envíos y cobros. La solución más completa para tu negocio online."
       />
@@ -53,10 +53,10 @@ const Contrareembolso: React.FC = () => {
               className="text-center"
             >
               <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Gestión de Contrareembolsos
+                Gestión Eficiente de Contrareembolsos
               </h1>
               <p className="text-lg text-blue-100 max-w-3xl mx-auto">
-                Optimiza la gestión de tus contrareembolsos con nuestra plataforma integral. 
+                Optimiza la gestión de tus contrareembolsos con nuestra plataforma integral de CRM especializado en ecommerce. 
                 Automatiza procesos, reduce tiempos y maximiza la seguridad en cada transacción.
               </p>
             </motion.div>
@@ -75,24 +75,24 @@ const Contrareembolso: React.FC = () => {
             >
               <div className="flex items-center mb-4">
                 <Clock className="text-blue-600 mr-3" size={24} />
-                <h3 className="text-xl font-semibold">Gestión Eficiente</h3>
+                <h3 className="text-xl font-semibold">Gestión Eficiente de Pedidos</h3>
               </div>
               <p className="text-gray-600 mb-4">
                 Automatiza la gestión de contrareembolsos y reduce los tiempos de procesamiento 
-                en un 70%. Nuestra plataforma integra todos los pasos del proceso en un solo lugar.
+                en un 70%. Nuestra plataforma integra todos los pasos del proceso en un solo lugar, incluyendo la creación automática de etiquetas de envío y confirmación de pedidos.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center">
                   <CheckCircle2 className="text-green-500 mr-2" size={16} />
-                  <span>Procesamiento automático de pagos</span>
+                  <span>Procesamiento automático de pagos y gestión de contra reembolso</span>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle2 className="text-green-500 mr-2" size={16} />
-                  <span>Integración con múltiples transportistas</span>
+                  <span>Integración con múltiples transportistas y Shopify</span>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle2 className="text-green-500 mr-2" size={16} />
-                  <span>Notificaciones en tiempo real</span>
+                  <span>Notificaciones en tiempo real y estadísticas de ventas</span>
                 </li>
               </ul>
             </motion.div>

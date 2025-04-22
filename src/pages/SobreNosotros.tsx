@@ -13,11 +13,11 @@ function SobreNosotros() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       <Head
-        title="Sobre Nosotros - Stockify.pro"
-        description="Conoce a Stockify.pro, la plataforma líder en gestión de stock y contrareembolsos para eCommerce. Nuestra misión, visión y equipo."
-        keywords="sobre nosotros, equipo, misión, visión, valores, historia, stockify.pro"
-        ogTitle="Sobre Nosotros - Stockify.pro"
-        ogDescription="Descubre quiénes somos y cómo trabajamos para transformar la gestión de eCommerce con soluciones innovadoras."
+        title="Sobre Nosotros - Stockify.pro | CRM para tiendas online"
+        description="Conoce a Stockify.pro, la plataforma líder en gestión de pedidos ecommerce, automatización de envíos y contrareembolsos. Nuestra misión, visión y equipo."
+        keywords="sobre nosotros, equipo, misión, visión, valores, historia, stockify.pro, CRM para tiendas online, gestión de pedidos ecommerce, automatización de envíos, etiquetas de envío, confirmación de pedidos, estadísticas de ventas, integración con Shopify, gestión de contra reembolso"
+        ogTitle="Sobre Nosotros - Stockify.pro | CRM para tiendas online"
+        ogDescription="Descubre quiénes somos y cómo trabajamos para transformar la gestión de eCommerce con soluciones innovadoras de automatización y análisis."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,10 +34,10 @@ function SobreNosotros() {
             <div>
               <h2 className="text-3xl font-bold mb-6 text-[#0F172A]">Nuestra Historia</h2>
               <p className="text-lg text-gray-600 mb-4">
-                Stockify.pro nació en 2018 de la visión de un grupo de emprendedores con experiencia en eCommerce y desarrollo tecnológico. Identificamos un problema común: la gestión eficiente de inventario y contrareembolsos era un desafío significativo para las tiendas online.
+                Stockify.pro nació en 2018 de la visión de un grupo de emprendedores con experiencia en eCommerce y desarrollo tecnológico. Identificamos un problema común: la gestión eficiente de inventario, automatización de envíos y contrareembolsos era un desafío significativo para las tiendas online.
               </p>
               <p className="text-lg text-gray-600 mb-4">
-                Comenzamos con una solución sencilla para gestionar contrareembolsos, y rápidamente evolucionamos hacia una plataforma completa que aborda todos los aspectos críticos del backend de un eCommerce exitoso.
+                Comenzamos con una solución sencilla para gestionar contrareembolsos, y rápidamente evolucionamos hacia una plataforma completa de CRM especializado en ecommerce que aborda todos los aspectos críticos del backend de un eCommerce exitoso, incluyendo la creación automática de etiquetas de envío, confirmación de pedidos y análisis de estadísticas de ventas en tiempo real.
               </p>
               <p className="text-lg text-gray-600">
                 Hoy, Stockify.pro es utilizado por cientos de tiendas online en toda España y pronto nos expandiremos a nuevos mercados europeos y latinoamericanos.
@@ -66,7 +66,7 @@ function SobreNosotros() {
               </div>
               <h3 className="text-2xl font-bold mb-4 text-[#0F172A]">Misión</h3>
               <p className="text-gray-600">
-                Proporcionar a los negocios online las herramientas más eficientes para gestionar su operativa, permitiéndoles centrarse en lo que realmente importa: crecer y satisfacer a sus clientes.
+                Proporcionar a los negocios online las herramientas más eficientes para gestionar su operativa, incluyendo software para automatizar envíos, sistema para confirmar pedidos y validar direcciones, y plataforma para analizar estadísticas de ventas en tiempo real, permitiéndoles centrarse en lo que realmente importa: crecer y satisfacer a sus clientes.
               </p>
             </div>
             <div className="text-center">
@@ -75,7 +75,7 @@ function SobreNosotros() {
               </div>
               <h3 className="text-2xl font-bold mb-4 text-[#0F172A]">Visión</h3>
               <p className="text-gray-600">
-                Ser la plataforma líder mundial en soluciones de gestión para eCommerce, reconocida por nuestra innovación constante, excelencia técnica y compromiso con el éxito de nuestros clientes.
+                Ser la plataforma líder mundial en soluciones de gestión para eCommerce, reconocida por nuestra innovación constante, excelencia técnica y compromiso con el éxito de nuestros clientes, ofreciendo integración sencilla con Shopify y gestión eficiente de pedidos y devoluciones en ecommerce.
               </p>
             </div>
             <div className="text-center">

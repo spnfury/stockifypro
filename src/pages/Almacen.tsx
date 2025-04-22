@@ -13,18 +13,18 @@ function Almacen() {
   return (
     <div className="min-h-screen pt-24 pb-16">
       <Head
-        title="Servicios de Almacenamiento - Stockify.pro"
-        description="Descubre nuestras soluciones de almacenamiento para tu eCommerce. Almacena tus productos con nosotros o con nuestros partners logísticos."
-        keywords="almacén, logística, eCommerce, almacenamiento, fulfillment, dropshipping, stock"
-        ogTitle="Servicios de Almacenamiento - Stockify.pro"
-        ogDescription="Soluciones flexibles de almacenamiento para optimizar la logística de tu tienda online."
+        title="Servicios de Almacenamiento - Stockify.pro | Gestión de pedidos ecommerce"
+        description="Descubre nuestras soluciones de almacenamiento y automatización de envíos para tu eCommerce. Sistema completo para gestión de pedidos, creación de etiquetas de envío y confirmación de pedidos."
+        keywords="almacén, logística, eCommerce, almacenamiento, fulfillment, dropshipping, stock, CRM para tiendas online, gestión de pedidos ecommerce, automatización de envíos, etiquetas de envío, confirmación de pedidos, estadísticas de ventas, integración con Shopify, gestión de contra reembolso"
+        ogTitle="Servicios de Almacenamiento - Stockify.pro | Gestión de pedidos ecommerce"
+        ogDescription="Soluciones flexibles de almacenamiento y automatización de envíos para optimizar la logística de tu tienda online."
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#0F172A]">Servicios de Almacenamiento</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-[#0F172A]">Servicios de Almacenamiento y Automatización</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Soluciones flexibles de almacenamiento para tu eCommerce. Almacena tus productos con nosotros o con nuestros partners logísticos.
+            Soluciones flexibles de almacenamiento y software para automatizar envíos en tiendas online. Almacena tus productos con nosotros o con nuestros partners logísticos.
           </p>
         </div>
 
@@ -33,9 +33,9 @@ function Almacen() {
           <div className="bg-gradient-to-r from-[#0F172A] to-blue-700 rounded-2xl p-12 text-white">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-6">Optimiza tu logística con nuestras soluciones de almacenamiento</h2>
+                <h2 className="text-3xl font-bold mb-6">Optimiza tu logística con nuestras soluciones de almacenamiento y automatización</h2>
                 <p className="text-lg mb-8">
-                  Olvídate de la complejidad de gestionar tu propio almacén. Con Stockify.pro, puedes almacenar tus productos con nosotros o con nuestros partners logísticos, permitiéndote centrarte en hacer crecer tu negocio.
+                  Olvídate de la complejidad de gestionar tu propio almacén. Con Stockify.pro, puedes almacenar tus productos con nosotros o con nuestros partners logísticos, mientras nuestro software para automatizar envíos se encarga de la gestión de pedidos, creación de etiquetas de envío y confirmación de pedidos.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="bg-white text-[#0F172A] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors" onClick={openContactForm}>
@@ -68,7 +68,7 @@ function Almacen() {
               <div className="p-8">
                 <h3 className="text-2xl font-bold text-[#0F172A] mb-4">Almacenamiento Propio</h3>
                 <p className="text-gray-600 mb-6">
-                  Almacena tus productos en nuestras instalaciones de última generación, con total control y visibilidad de tu inventario a través de nuestra plataforma.
+                  Almacena tus productos en nuestras instalaciones de última generación, con total control y visibilidad de tu inventario a través de nuestra plataforma de CRM especializado en ecommerce.
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
@@ -77,15 +77,15 @@ function Almacen() {
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Monitorización del inventario en tiempo real</span>
+                    <span className="text-gray-700">Monitorización del inventario y estadísticas de ventas en tiempo real</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Preparación y empaquetado de pedidos</span>
+                    <span className="text-gray-700">Preparación, empaquetado y automatización de envíos</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Seguridad 24/7 y control de condiciones ambientales</span>
+                    <span className="text-gray-700">Sistema para confirmar pedidos y validar direcciones</span>
                   </li>
                 </ul>
                 <button className="flex items-center font-semibold text-blue-600 hover:text-blue-800">
