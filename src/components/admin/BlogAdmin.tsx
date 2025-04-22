@@ -4,6 +4,36 @@ import { useAuth } from '../auth/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { Article } from '../../types/article';
 
+// Función para generar un slug a partir de un título
+const generateSlug = (title: string): string => {
+  return title
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Eliminar acentos
+    .replace(/[^a-z0-9]+/g, '-') // Reemplazar caracteres no alfanuméricos por guiones
+    .replace(/(^-|-$)/g, ''); // Eliminar guiones al inicio y final
+};
+
+// Función para generar metadatos SEO
+const generateMetaData = (title: string, content: string): { metaTitle: string; metaDescription: string; metaKeywords: string } => {
+  // Extraer las primeras 160 caracteres para la descripción
+  const description = content.substring(0, 160).replace(/\n/g, ' ').trim() + '...';
+  
+  // Generar palabras clave basadas en el título y contenido
+  const keywords = [
+    ...new Set([
+      ...title.toLowerCase().split(' '),
+      ...content.toLowerCase().split(' ').filter(word => word.length > 3)
+    ])
+  ].slice(0, 10).join(', ');
+
+  return {
+    metaTitle: `${title} | Stockify.pro Blog`,
+    metaDescription: description,
+    metaKeywords: keywords
+  };
+};
+
 interface BlogAdminProps {
   articles: Article[];
   setArticles: React.Dispatch<React.SetStateAction<Article[]>>;
@@ -24,13 +54,27 @@ const BlogAdmin: React.FC<BlogAdminProps> = ({ articles, setArticles }) => {
   const handleSave = async (article: Article) => {
     setIsLoading(true);
     try {
-      // Aquí iría la lógica para guardar en la base de datos
+      const slug = generateSlug(article.title);
+      const metaData = generateMetaData(article.title, article.content);
+
+      const newArticle: Article = {
+        id: article.id || Date.now().toString(),
+        title: article.title,
+        content: article.content,
+        excerpt: article.excerpt || article.content.substring(0, 200) + '...',
+        imageUrl: article.imageUrl,
+        published: article.published,
+        createdAt: article.createdAt || new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        categories: article.categories?.map(cat => ({ ...cat, slug: generateSlug(cat.name) })),
+        viewCount: article.viewCount || 50,
+        slug,
+        ...metaData
+      };
+
       if (article.id) {
-        // Actualizar artículo existente
-        setArticles(articles.map(a => a.id === article.id ? article : a));
+        setArticles(articles.map(a => a.id === article.id ? newArticle : a));
       } else {
-        // Crear nuevo artículo
-        const newArticle = { ...article, id: Date.now().toString() };
         setArticles([...articles, newArticle]);
       }
       setEditingArticle(null);
@@ -45,7 +89,6 @@ const BlogAdmin: React.FC<BlogAdminProps> = ({ articles, setArticles }) => {
     if (window.confirm('¿Estás seguro de que quieres eliminar este artículo?')) {
       setIsLoading(true);
       try {
-        // Aquí iría la lógica para eliminar de la base de datos
         setArticles(articles.filter(a => a.id !== id));
       } catch (error) {
         console.error('Error al eliminar el artículo:', error);

@@ -200,13 +200,32 @@ function App() {
   const [articles, setArticles] = useState<Article[]>(() => {
     // Intentar cargar artículos del localStorage al inicializar
     const savedArticles = localStorage.getItem('articles');
-    return savedArticles ? JSON.parse(savedArticles) : [];
+    if (savedArticles) {
+      const parsedArticles = JSON.parse(savedArticles);
+      // Asegurarse de que todos los artículos tengan un contador de visitas
+      return parsedArticles.map((article: Article) => ({
+        ...article,
+        viewCount: article.viewCount || 50 // Iniciar en 50 si no existe
+      }));
+    }
+    return [];
   });
 
   // Guardar artículos en localStorage cuando cambien
   useEffect(() => {
     localStorage.setItem('articles', JSON.stringify(articles));
   }, [articles]);
+
+  // Función para actualizar el contador de visitas
+  const handleViewCountUpdate = (articleId: string) => {
+    setArticles(prevArticles => 
+      prevArticles.map(article => 
+        article.id === articleId 
+          ? { ...article, viewCount: (article.viewCount || 50) + 1 }
+          : article
+      )
+    );
+  };
 
   // Escuchar el evento personalizado desde componentes hijos
   useEffect(() => {
@@ -478,7 +497,7 @@ function App() {
                     {publishedArticles.slice(0, 3).map((article) => (
                       <Link
                         key={article.id}
-                        to={`/blog/${article.id}`}
+                        to={`/blog/${article.slug}`}
                         className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden"
                       >
                         {article.imageUrl && (
@@ -679,7 +698,12 @@ function App() {
           <Route path="/terminos" element={<Terminos />} />
           <Route path="/sobre-nosotros" element={<SobreNosotros />} />
           <Route path="/blog" element={<BlogList articles={publishedArticles} />} />
-          <Route path="/blog/:id" element={<BlogPost article={publishedArticles[0]} />} />
+          <Route path="/blog/:slug" element={
+            <BlogPost 
+              article={publishedArticles.find(article => article.slug === location.pathname.split('/').pop()) || publishedArticles[0]} 
+              onViewCountUpdate={handleViewCountUpdate}
+            />
+          } />
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/blog" element={<BlogAdmin articles={articles} setArticles={setArticles} />} />
         </Routes>

@@ -14,4 +14,9 @@ export interface Article {
   createdAt: string;
   updatedAt: string;
   categories?: Category[];
+  viewCount: number;
+  slug: string;
+  metaTitle: string;
+  metaDescription: string;
+  metaKeywords: string;
 } 
