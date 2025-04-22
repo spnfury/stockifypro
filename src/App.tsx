@@ -35,8 +35,8 @@ import BlogList from './components/blog/BlogList';
 import BlogPost from './components/blog/BlogPost';
 import { AuthProvider } from './components/auth/AuthProvider';
 import Login from './components/auth/Login';
+import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { Article, Category } from './types/article';
-import { ProtectedRoute } from './components/ProtectedRoute';
 
 function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const formRef = useRef<HTMLFormElement>(null);
