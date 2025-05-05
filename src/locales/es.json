@@ -1,0 +1,390 @@
+{
+  "common": {
+    "close": "Cerrar",
+    "submit": "Enviar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "readMore": "Leer más",
+    "startNow": "Empezar ahora",
+    "viewDemo": "Ver Demo",
+    "requestDemo": "Solicitar Demo",
+    "requestCustomDemo": "Solicitar Demo Personalizada",
+    "allRightsReserved": "Todos los derechos reservados",
+    "seeMore": "Ver más detalles",
+    "viewAll": "Ver todos",
+    "learnMore": "Saber más"
+  },
+  "meta": {
+    "title": "StockifyPro - CRM para tiendas online",
+    "description": "Plataforma integral de CRM especializado en ecommerce con pago contra reembolso. Automatización de envíos, creación de etiquetas de envío y análisis de estadísticas.",
+    "keywords": "CRM, ecommerce, gestión de pedidos, contrareembolso, automatización de envíos, Shopify, tienda online"
+  },
+  "contact": {
+    "title": "Contacta con nosotros",
+    "description": "¿Tienes alguna pregunta? Estamos aquí para ayudarte.",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "submit": "Enviar",
+    "submitSuccess": "¡Gracias! Tu mensaje ha sido enviado correctamente.",
+    "submitError": "Lo sentimos, ha ocurrido un error al enviar el mensaje."
+  },
+  "navigation": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "about": "Sobre nosotros",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "company": "Empresa",
+    "legal": "Legal"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "cashOnDelivery": "Contrareembolso",
+    "profiles": "Perfiles",
+    "carriers": "Transportistas",
+    "warehouse": "Almacén",
+    "company": "Empresa",
+    "legal": "Legal"
+  },
+  "hero": {
+    "title": "CRM para tiendas online\nGestión de pedidos ecommerce",
+    "subtitle": "Gestión de pedidos ecommerce",
+    "description": "Plataforma integral de CRM especializado en ecommerce con pago contra reembolso. Automatización de envíos, creación de etiquetas de envío, confirmación de pedidos y análisis de estadísticas de ventas en tiempo real. 100% personalizable según las necesidades específicas de tu negocio.",
+    "compatibleWith": "Compatible 100%",
+    "integratedCarriers": "Compañías de transporte integradas",
+    "cta1": "Prueba Gratuita",
+    "cta2": "Ver Demo",
+    "dashboardPreview": "Vista previa del Dashboard",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&h=120&q=80"
+  },
+  "features": {
+    "title": "Todo lo que Necesitas para Gestionar tu eCommerce",
+    "description": "La solución más completa para la gestión de pedidos ecommerce, automatización de envíos y análisis de estadísticas. Totalmente adaptable a tus procesos y flujos de trabajo.",
+    "seeDetails": "Ver más detalles",
+    "requestDemo": "Solicitar Demo Personalizada",
+    "orderManagement": {
+      "title": "Gestión de Pedidos y Contrareembolsos",
+      "description": "Software para automatizar envíos en tiendas online y gestión eficiente de pedidos y devoluciones en ecommerce. Configurable según tus reglas de negocio.",
+      "benefits": [
+        "Reducción del 70% en tiempo de gestión",
+        "Automatización de cobros y confirmación de pedidos",
+        "Seguimiento en tiempo real y estadísticas de ventas",
+        "Personalización total de flujos de trabajo"
+      ],
+      "link": "Ver más detalles"
+    },
+    "profiles": {
+      "title": "Gestión de Perfiles Avanzada",
+      "description": "Sistema de roles personalizados para confirmadores, administradores y gestores.",
+      "benefits": [
+        "Control total de accesos",
+        "Asignación de responsabilidades",
+        "Auditoría de acciones"
+      ],
+      "link": "Ver más detalles"
+    },
+    "warehouse": {
+      "title": "Multi-almacén Inteligente",
+      "description": "Gestiona stock privado y general con sistema de comisiones para distribuidores.",
+      "benefits": [
+        "Optimización de inventario",
+        "Reducción de costes en 40%",
+        "Seguimiento multi-ubicación"
+      ],
+      "link": "Ver más detalles"
+    },
+    "shipping": {
+      "title": "Automatización de Envíos",
+      "description": "Herramienta para crear etiquetas de envío automáticamente y sistema para confirmar pedidos y validar direcciones.",
+      "benefits": [
+        "Seguimiento en tiempo real",
+        "Automatización de envíos",
+        "Integración con múltiples transportistas"
+      ],
+      "link": "Ver más detalles"
+    },
+    "ai": {
+      "title": "Asistente Virtual Inteligente",
+      "description": "Sistema de confirmación y atención al cliente con inteligencia artificial.",
+      "benefits": [
+        "Respuestas instantáneas",
+        "Reducción de carga de trabajo",
+        "Mejora en satisfacción cliente"
+      ],
+      "link": "Ver más detalles"
+    },
+    "analytics": {
+      "title": "Análisis y CRM Avanzado",
+      "description": "Plataforma para analizar estadísticas de ventas en tiempo real con integración sencilla de CRM con Shopify. Dashboard personalizable según tus KPIs.",
+      "benefits": [
+        "Informes personalizados y análisis predictivo",
+        "Gestión de clientes y ventas",
+        "Estadísticas de ventas en tiempo real",
+        "Paneles de control adaptables a tus necesidades"
+      ],
+      "link": "Ver más detalles"
+    }
+  },
+  "blog": {
+    "title": "Últimos Artículos del Blog",
+    "description": "Descubre las últimas novedades, consejos y tendencias en ecommerce",
+    "viewAll": "Ver todos los artículos",
+    "readTime": "min de lectura",
+    "categories": {
+      "orderManagement": "Gestión de Pedidos",
+      "automation": "Automatización",
+      "integrations": "Integraciones",
+      "tutorials": "Tutoriales",
+      "news": "Noticias"
+    },
+    "noPosts": "No hay artículos disponibles",
+    "search": "Buscar artículos...",
+    "filterByCategory": "Filtrar por categoría",
+    "sortBy": "Ordenar por",
+    "sortOptions": {
+      "newest": "Más recientes",
+      "oldest": "Más antiguos",
+      "popular": "Más populares"
+    },
+    "readMore": "Leer más",
+    "share": "Compartir",
+    "relatedPosts": "Artículos relacionados",
+    "tags": "Etiquetas",
+    "author": "Autor",
+    "published": "Publicado el",
+    "updated": "Actualizado el"
+  },
+  "video": {
+    "title": "Descubre Stockify en Acción",
+    "description": "Mira cómo nuestra plataforma puede transformar tu negocio",
+    "cta": "Solicitar Demo Personalizada",
+    "watchVideo": "Ver video demostrativo",
+    "play": "Reproducir video",
+    "pause": "Pausar video",
+    "mute": "Silenciar",
+    "unmute": "Activar sonido",
+    "fullscreen": "Pantalla completa",
+    "exitFullscreen": "Salir de pantalla completa"
+  },
+  "pricing": {
+    "title": "Planes Adaptados a Tu Negocio",
+    "description": "Soluciones flexibles que crecen contigo",
+    "monthly": "mensual",
+    "billedAnnually": "facturado anualmente",
+    "save": "Ahorra",
+    "mostPopular": "Más popular",
+    "features": {
+      "unlimitedOrders": "Pedidos ilimitados",
+      "advancedAnalytics": "Análisis avanzado",
+      "prioritySupport": "Soporte prioritario",
+      "customIntegrations": "Integraciones personalizadas",
+      "apiAccess": "Acceso a API",
+      "dedicatedAccountManager": "Gestor de cuenta dedicado"
+    },
+    "comparePlans": "Comparar planes",
+    "contactSales": "Contactar con ventas",
+    "freeTrial": "Prueba gratuita de 14 días",
+    "noCreditCard": "Sin tarjeta de crédito",
+    "cancelAnytime": "Cancela en cualquier momento"
+  },
+  "footer": {
+    "description": "La solución más completa para la gestión de tu negocio online.",
+    "newsletter": {
+      "title": "Suscríbete a nuestro boletín",
+      "description": "Recibe las últimas noticias y actualizaciones",
+      "placeholder": "Tu correo electrónico",
+      "subscribe": "Suscribirse",
+      "success": "¡Gracias por suscribirte!",
+      "error": "Error al suscribirse"
+    },
+    "social": {
+      "title": "Síguenos",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    },
+    "services": {
+      "title": "Servicios",
+      "cashOnDelivery": "Contrareembolso",
+      "profiles": "Perfiles",
+      "warehouse": "Almacén",
+      "carriers": "Transportistas"
+    },
+    "company": {
+      "title": "Empresa",
+      "about": "Sobre Nosotros",
+      "contact": "Contacto",
+      "careers": "Trabaja con nosotros",
+      "blog": "Blog"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Política de Privacidad",
+      "terms": "Términos y Condiciones",
+      "cookies": "Política de Cookies",
+      "gdpr": "RGPD"
+    },
+    "copyright": "© {year} StockifyPro. Todos los derechos reservados."
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "subtitle": "Impulsando el éxito de tu negocio online",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Facilitar la gestión de pedidos y envíos para tiendas online, ofreciendo soluciones innovadoras que optimicen los procesos y mejoren la experiencia del cliente final."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "description": "Ser el referente en soluciones de gestión para ecommerce, ayudando a empresas de todos los tamaños a crecer y prosperar en el mundo digital."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "items": [
+        {
+          "title": "Innovación",
+          "description": "Buscamos constantemente nuevas formas de mejorar y optimizar los procesos de nuestros clientes."
+        },
+        {
+          "title": "Excelencia",
+          "description": "Nos comprometemos a ofrecer productos y servicios de la más alta calidad."
+        },
+        {
+          "title": "Transparencia",
+          "description": "Mantenemos una comunicación clara y honesta con nuestros clientes y socios."
+        },
+        {
+          "title": "Compromiso",
+          "description": "Trabajamos con pasión y dedicación para garantizar el éxito de nuestros clientes."
+        }
+      ]
+    },
+    "team": {
+      "title": "Nuestro Equipo",
+      "description": "Un grupo de profesionales apasionados por la tecnología y el comercio electrónico",
+      "roles": {
+        "ceo": "CEO y Fundador",
+        "cto": "Director Técnico",
+        "cmo": "Director de Marketing",
+        "developer": "Desarrollador",
+        "designer": "Diseñador",
+        "support": "Soporte Técnico"
+      }
+    },
+    "story": {
+      "title": "Nuestra Historia",
+      "description": "Fundada en 2023, StockifyPro nació de la necesidad de simplificar la gestión de pedidos en el comercio electrónico. Lo que comenzó como una solución para un problema específico, se ha convertido en una plataforma integral que ayuda a cientos de empresas a optimizar sus operaciones.",
+      "milestones": [
+        {
+          "year": "2023",
+          "title": "Fundación",
+          "description": "Nacimiento de StockifyPro con la misión de revolucionar la gestión de pedidos online"
+        },
+        {
+          "year": "2024",
+          "title": "Expansión",
+          "description": "Lanzamiento de nuevas funcionalidades y expansión a nuevos mercados"
+        }
+      ]
+    },
+    "achievements": {
+      "title": "Nuestros Logros",
+      "items": [
+        {
+          "number": "1000+",
+          "title": "Clientes Satisfechos",
+          "description": "Empresas que confían en nuestra plataforma"
+        },
+        {
+          "number": "50+",
+          "title": "Integraciones",
+          "description": "Con diferentes plataformas y servicios"
+        },
+        {
+          "number": "24/7",
+          "title": "Soporte",
+          "description": "Atención al cliente siempre disponible"
+        }
+      ]
+    },
+    "partners": {
+      "title": "Nuestros Socios",
+      "description": "Colaboramos con las mejores empresas del sector para ofrecerte la mejor experiencia"
+    },
+    "cta": {
+      "title": "¿Listo para unirte a nosotros?",
+      "description": "Descubre cómo podemos ayudarte a crecer tu negocio online",
+      "button": "Contacta con nosotros"
+    }
+  },
+  "urls": {
+    "home": "/",
+    "about": "/sobre-nosotros",
+    "services": {
+      "main": "/servicios",
+      "cashOnDelivery": "/servicios/contrareembolso",
+      "profiles": "/servicios/perfiles",
+      "warehouse": "/servicios/almacen",
+      "carriers": "/servicios/transportistas"
+    },
+    "blog": {
+      "main": "/blog",
+      "categories": {
+        "orderManagement": "/blog/gestion-pedidos",
+        "automation": "/blog/automatizacion",
+        "integrations": "/blog/integraciones",
+        "tutorials": "/blog/tutoriales",
+        "news": "/blog/noticias"
+      },
+      "post": "/blog/post"
+    },
+    "pricing": "/precios",
+    "contact": "/contacto",
+    "auth": {
+      "login": "/auth/login",
+      "register": "/auth/registro",
+      "forgot": "/auth/recuperar",
+      "reset": "/auth/reset"
+    },
+    "dashboard": {
+      "main": "/dashboard",
+      "orders": "/dashboard/pedidos",
+      "analytics": "/dashboard/analiticas",
+      "settings": "/dashboard/ajustes"
+    },
+    "admin": {
+      "main": "/admin",
+      "users": "/admin/usuarios",
+      "settings": "/admin/ajustes",
+      "analytics": "/admin/analiticas"
+    },
+    "legal": {
+      "privacy": "/legal/privacidad",
+      "terms": "/legal/terminos",
+      "cookies": "/legal/cookies",
+      "gdpr": "/legal/rgpd"
+    },
+    "company": {
+      "about": "/empresa/sobre-nosotros",
+      "careers": "/empresa/empleo",
+      "partners": "/empresa/socios"
+    },
+    "support": {
+      "main": "/soporte",
+      "faq": "/soporte/faq",
+      "contact": "/soporte/contacto",
+      "docs": "/soporte/documentacion"
+    }
+  },
+  "cta": {
+    "demo": "Solicitar Demo Personalizada",
+    "start": "Empezar ahora",
+    "contact": "Contactar",
+    "learnMore": "Saber más",
+    "watchVideo": "Ver video"
+  }
+} 

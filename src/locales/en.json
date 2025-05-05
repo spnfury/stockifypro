@@ -1,0 +1,186 @@
+{
+  "common": {
+    "close": "Close",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "readMore": "Read More",
+    "startNow": "Start Now",
+    "viewDemo": "View Demo",
+    "requestDemo": "Request Personalized Demo",
+    "allRightsReserved": "All rights reserved"
+  },
+  "contact": {
+    "title": "Request Free Trial",
+    "description": "Discover how our ecommerce-specialized CRM can transform your business with shipping automation, order management, and real-time statistics analysis.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submitSuccess": "Thank you for contacting us! We will get back to you soon.",
+    "submitError": "There was an error sending the form. Please try again."
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "blog": "Blog",
+    "contact": "Contact",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "services": {
+    "title": "Our Services",
+    "cashOnDelivery": "Cash on Delivery",
+    "profiles": "Profiles",
+    "carriers": "Carriers",
+    "warehouse": "Warehouse",
+    "company": "Company",
+    "legal": "Legal"
+  },
+  "hero": {
+    "title": "CRM for Online Stores",
+    "subtitle": "Ecommerce Order Management",
+    "description": "Comprehensive CRM platform specialized in ecommerce with cash on delivery. Shipping automation, shipping label creation, order confirmation, and real-time sales statistics analysis. 100% customizable according to your specific business needs.",
+    "compatibleWith": "100% Compatible",
+    "integratedCarriers": "Integrated Shipping Companies"
+  },
+  "features": {
+    "title": "Everything You Need to Manage Your Ecommerce",
+    "description": "The most complete solution for ecommerce order management, shipping automation, and statistics analysis. Fully adaptable to your processes and workflows.",
+    "orderManagement": {
+      "title": "Order Management and Cash on Delivery",
+      "description": "Software to automate shipping in online stores and efficient management of orders and returns in ecommerce. Configurable according to your business rules.",
+      "benefits": [
+        "70% reduction in management time",
+        "Automation of payments and order confirmation",
+        "Real-time tracking and sales statistics",
+        "Complete workflow customization"
+      ]
+    },
+    "profiles": {
+      "title": "Advanced Profile Management",
+      "description": "Custom role system for confirmers, administrators, and managers.",
+      "benefits": [
+        "Total access control",
+        "Responsibility assignment",
+        "Action auditing"
+      ]
+    },
+    "warehouse": {
+      "title": "Smart Multi-Warehouse",
+      "description": "Manage private and general stock with commission system for distributors.",
+      "benefits": [
+        "Inventory optimization",
+        "40% cost reduction",
+        "Multi-location tracking"
+      ]
+    },
+    "shipping": {
+      "title": "Shipping Automation",
+      "description": "Tool to automatically create shipping labels and system to confirm orders and validate addresses.",
+      "benefits": [
+        "Real-time tracking",
+        "Shipping automation",
+        "Integration with multiple carriers"
+      ]
+    },
+    "ai": {
+      "title": "AI for Customer Service",
+      "description": "Confirmation and customer service system with artificial intelligence.",
+      "benefits": [
+        "Instant responses",
+        "Workload reduction",
+        "Improved customer satisfaction"
+      ]
+    },
+    "analytics": {
+      "title": "Advanced Statistics and CRM",
+      "description": "Platform to analyze sales statistics in real-time with easy CRM integration with Shopify. Dashboard customizable according to your KPIs.",
+      "benefits": [
+        "Custom reports and predictive analysis",
+        "Customer and sales management",
+        "Real-time sales statistics",
+        "Dashboards adaptable to your needs"
+      ]
+    }
+  },
+  "blog": {
+    "title": "Latest Blog Articles",
+    "description": "Discover the latest news, tips, and trends in ecommerce",
+    "viewAll": "View all articles",
+    "readTime": "min read",
+    "categories": {
+      "orderManagement": "Order Management",
+      "automation": "Automation",
+      "integrations": "Integrations",
+      "tutorials": "Tutorials",
+      "news": "News"
+    }
+  },
+  "video": {
+    "title": "Discover Stockify in Action",
+    "description": "See how our platform can transform your business"
+  },
+  "pricing": {
+    "title": "Plans Tailored to Your Business",
+    "description": "Flexible solutions that grow with you",
+    "plans": {
+      "basic": {
+        "name": "Basic",
+        "price": "50",
+        "limit": "Up to 1,000 shipments",
+        "features": [
+          "Email support",
+          "Control panel",
+          "Updates every 15 min"
+        ]
+      },
+      "standard": {
+        "name": "Standard",
+        "price": "399",
+        "limit": "Up to 10,000 shipments",
+        "features": [
+          "Priority support",
+          "Advanced statistics",
+          "Custom webhooks"
+        ]
+      },
+      "premium": {
+        "name": "Premium",
+        "price": "499",
+        "limit": "Up to 50,000 shipments",
+        "features": [
+          "Advanced integrations",
+          "Early access to new features",
+          "Direct technical support"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "limit": "Unlimited shipments",
+        "features": [
+          "Dedicated SLA",
+          "Personalized onboarding",
+          "Custom integrations",
+          "24/7 support"
+        ]
+      }
+    }
+  },
+  "footer": {
+    "description": "The most complete solution for managing your online business.",
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "contact": "Contact"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Privacy Policy",
+      "terms": "Terms and Conditions",
+      "cookies": "Cookie Policy"
+    }
+  }
+} 

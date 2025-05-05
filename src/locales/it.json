@@ -1,0 +1,34 @@
+{
+  "common": {
+    "close": "Chiudi",
+    "submit": "Invia",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo"
+  },
+  "contact": {
+    "title": "Richiedi Prova Gratuita",
+    "description": "Scopri come il nostro CRM specializzato in ecommerce può trasformare la tua attività con l'automazione delle spedizioni, la gestione degli ordini e l'analisi delle statistiche in tempo reale.",
+    "name": "Nome",
+    "email": "Email",
+    "message": "Messaggio",
+    "submitSuccess": "Grazie per averci contattato! Ti risponderemo presto.",
+    "submitError": "Si è verificato un errore durante l'invio del modulo. Per favore, riprova."
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Servizi",
+    "about": "Chi Siamo",
+    "blog": "Blog",
+    "contact": "Contatti",
+    "login": "Accedi",
+    "logout": "Esci"
+  },
+  "services": {
+    "title": "I Nostri Servizi",
+    "cashOnDelivery": "Contrassegno",
+    "profiles": "Profili",
+    "carriers": "Corrieri",
+    "warehouse": "Magazzino"
+  }
+} 

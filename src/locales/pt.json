@@ -1,0 +1,186 @@
+{
+  "common": {
+    "close": "Fechar",
+    "submit": "Enviar",
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "readMore": "Ler Mais",
+    "startNow": "Começar Agora",
+    "viewDemo": "Ver Demonstração",
+    "requestDemo": "Solicitar Demonstração Personalizada",
+    "allRightsReserved": "Todos os direitos reservados"
+  },
+  "contact": {
+    "title": "Solicitar Teste Gratuito",
+    "description": "Descubra como nosso CRM especializado em ecommerce pode transformar seu negócio com automação de envios, gerenciamento de pedidos e análise de estatísticas em tempo real.",
+    "name": "Nome",
+    "email": "Email",
+    "message": "Mensagem",
+    "submitSuccess": "Obrigado por entrar em contato! Retornaremos em breve.",
+    "submitError": "Ocorreu um erro ao enviar o formulário. Por favor, tente novamente."
+  },
+  "navigation": {
+    "home": "Início",
+    "services": "Serviços",
+    "about": "Sobre Nós",
+    "blog": "Blog",
+    "contact": "Contato",
+    "login": "Login",
+    "logout": "Sair"
+  },
+  "services": {
+    "title": "Nossos Serviços",
+    "cashOnDelivery": "Pagamento na Entrega",
+    "profiles": "Perfis",
+    "carriers": "Transportadoras",
+    "warehouse": "Armazém",
+    "company": "Empresa",
+    "legal": "Legal"
+  },
+  "hero": {
+    "title": "CRM para Lojas Online",
+    "subtitle": "Gerenciamento de Pedidos Ecommerce",
+    "description": "Plataforma CRM completa especializada em ecommerce com pagamento na entrega. Automação de envios, criação de etiquetas de envio, confirmação de pedidos e análise de estatísticas de vendas em tempo real. 100% personalizável de acordo com suas necessidades específicas de negócio.",
+    "compatibleWith": "100% Compatível",
+    "integratedCarriers": "Transportadoras Integradas"
+  },
+  "features": {
+    "title": "Tudo o que Você Precisa para Gerenciar Seu Ecommerce",
+    "description": "A solução mais completa para gerenciamento de pedidos ecommerce, automação de envios e análise de estatísticas. Totalmente adaptável aos seus processos e fluxos de trabalho.",
+    "orderManagement": {
+      "title": "Gerenciamento de Pedidos e Pagamento na Entrega",
+      "description": "Software para automatizar envios em lojas online e gerenciamento eficiente de pedidos e devoluções em ecommerce. Configurável de acordo com suas regras de negócio.",
+      "benefits": [
+        "Redução de 70% no tempo de gerenciamento",
+        "Automação de pagamentos e confirmação de pedidos",
+        "Rastreamento em tempo real e estatísticas de vendas",
+        "Personalização completa do fluxo de trabalho"
+      ]
+    },
+    "profiles": {
+      "title": "Gerenciamento Avançado de Perfis",
+      "description": "Sistema de funções personalizado para confirmadores, administradores e gerentes.",
+      "benefits": [
+        "Controle total de acesso",
+        "Atribuição de responsabilidades",
+        "Auditoria de ações"
+      ]
+    },
+    "warehouse": {
+      "title": "Armazém Inteligente Múltiplo",
+      "description": "Gerencie estoque privado e geral com sistema de comissão para distribuidores.",
+      "benefits": [
+        "Otimização de inventário",
+        "Redução de 40% nos custos",
+        "Rastreamento multi-local"
+      ]
+    },
+    "shipping": {
+      "title": "Automação de Envios",
+      "description": "Ferramenta para criar automaticamente etiquetas de envio e sistema para confirmar pedidos e validar endereços.",
+      "benefits": [
+        "Rastreamento em tempo real",
+        "Automação de envios",
+        "Integração com múltiplas transportadoras"
+      ]
+    },
+    "ai": {
+      "title": "IA para Atendimento ao Cliente",
+      "description": "Sistema de confirmação e atendimento ao cliente com inteligência artificial.",
+      "benefits": [
+        "Respostas instantâneas",
+        "Redução de carga de trabalho",
+        "Melhoria na satisfação do cliente"
+      ]
+    },
+    "analytics": {
+      "title": "Estatísticas Avançadas e CRM",
+      "description": "Plataforma para analisar estatísticas de vendas em tempo real com fácil integração CRM com Shopify. Dashboard personalizável de acordo com seus KPIs.",
+      "benefits": [
+        "Relatórios personalizados e análise preditiva",
+        "Gerenciamento de clientes e vendas",
+        "Estatísticas de vendas em tempo real",
+        "Dashboards adaptáveis às suas necessidades"
+      ]
+    }
+  },
+  "blog": {
+    "title": "Últimos Artigos do Blog",
+    "description": "Descubra as últimas notícias, dicas e tendências em ecommerce",
+    "viewAll": "Ver todos os artigos",
+    "readTime": "min de leitura",
+    "categories": {
+      "orderManagement": "Gerenciamento de Pedidos",
+      "automation": "Automação",
+      "integrations": "Integrações",
+      "tutorials": "Tutoriais",
+      "news": "Notícias"
+    }
+  },
+  "video": {
+    "title": "Descubra o Stockify em Ação",
+    "description": "Veja como nossa plataforma pode transformar seu negócio"
+  },
+  "pricing": {
+    "title": "Planos Adaptados ao Seu Negócio",
+    "description": "Soluções flexíveis que crescem com você",
+    "plans": {
+      "basic": {
+        "name": "Básico",
+        "price": "50",
+        "limit": "Até 1.000 envios",
+        "features": [
+          "Suporte por email",
+          "Painel de controle",
+          "Atualizações a cada 15 min"
+        ]
+      },
+      "standard": {
+        "name": "Standard",
+        "price": "399",
+        "limit": "Até 10.000 envios",
+        "features": [
+          "Suporte prioritário",
+          "Estatísticas avançadas",
+          "Webhooks personalizados"
+        ]
+      },
+      "premium": {
+        "name": "Premium",
+        "price": "499",
+        "limit": "Até 50.000 envios",
+        "features": [
+          "Integrações avançadas",
+          "Acesso antecipado a novas funcionalidades",
+          "Suporte técnico direto"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Personalizado",
+        "limit": "Envios ilimitados",
+        "features": [
+          "SLA dedicado",
+          "Onboarding personalizado",
+          "Integrações personalizadas",
+          "Suporte 24/7"
+        ]
+      }
+    }
+  },
+  "footer": {
+    "description": "A solução mais completa para gerenciar seu negócio online.",
+    "company": {
+      "title": "Empresa",
+      "about": "Sobre Nós",
+      "contact": "Contato"
+    },
+    "legal": {
+      "title": "Legal",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos e Condições",
+      "cookies": "Política de Cookies"
+    }
+  }
+} 
