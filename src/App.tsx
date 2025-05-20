@@ -39,6 +39,7 @@ import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { Article, Category } from './types/article';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import LanguageSelector from './components/LanguageSelector';
+import Servicios from './components/Servicios';
 
 function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const { t } = useLanguage();
@@ -239,7 +240,13 @@ function App() {
   return (
     <AuthProvider>
       <div className="min-h-screen bg-gray-50">
-        <Head />
+        <Head
+          title={t('meta.title')}
+          description={t('meta.description')}
+          keywords={t('meta.keywords')}
+          ogTitle={t('meta.title')}
+          ogDescription={t('meta.description')}
+        />
         <header className="bg-white shadow-sm sticky top-0 z-50">
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-20">
@@ -597,8 +604,8 @@ function App() {
                       {[
                         {
                           name: "Basic",
-                          price: "299",
-                          limit: "Hasta 1.000 envíos",
+                          price: "199",
+                          limit: "Hasta 10.000 envíos",
                           features: [
                             "Soporte por email",
                             "Panel de control",
@@ -609,8 +616,8 @@ function App() {
                         },
                         {
                           name: "Standard",
-                          price: "399",
-                          limit: "Hasta 10.000 envíos",
+                          price: "299",
+                          limit: "Hasta 50.000 envíos",
                           features: [
                             "Soporte prioritario",
                             "Estadísticas avanzadas",
@@ -621,8 +628,8 @@ function App() {
                         },
                         {
                           name: "Premium",
-                          price: "499",
-                          limit: "Hasta 50.000 envíos",
+                          price: "399",
+                          limit: "Hasta 100.000 envíos",
                           features: [
                             "Integraciones avanzadas",
                             "Acceso anticipado a nuevas funciones",
@@ -677,6 +684,46 @@ function App() {
                         </div>
                       ))}
                     </div>
+                    {/* Comparativa de precios */}
+                    <div className="mt-12">
+                      <h3 className="text-2xl font-bold text-[#0F172A] mb-4 text-center">Comparativa con otros softwares</h3>
+                      <p className="text-center text-gray-600 mb-6">
+                        Otros softwares cobran una media de <span className="font-semibold">0,13 € por envío</span>. Así quedaría el coste mensual equivalente:
+                      </p>
+                      <div className="overflow-x-auto">
+                        <table className="min-w-full bg-white rounded-xl shadow-md">
+                          <thead>
+                            <tr>
+                              <th className="px-6 py-3 border-b text-left text-sm font-semibold text-[#0F172A]">Plan</th>
+                              <th className="px-6 py-3 border-b text-left text-sm font-semibold text-[#0F172A]">Coste con otros softwares</th>
+                              <th className="px-6 py-3 border-b text-left text-sm font-semibold text-[#0F172A]">Coste con Stockify</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td className="px-6 py-4 border-b">Basic (10.000 envíos)</td>
+                              <td className="px-6 py-4 border-b font-bold text-red-600">1.300 €/mes</td>
+                              <td className="px-6 py-4 border-b font-bold text-green-700">199 €/mes</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 border-b">Standard (50.000 envíos)</td>
+                              <td className="px-6 py-4 border-b font-bold text-red-600">6.500 €/mes</td>
+                              <td className="px-6 py-4 border-b font-bold text-green-700">299 €/mes</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4 border-b">Premium (100.000 envíos)</td>
+                              <td className="px-6 py-4 border-b font-bold text-red-600">13.000 €/mes</td>
+                              <td className="px-6 py-4 border-b font-bold text-green-700">399 €/mes</td>
+                            </tr>
+                            <tr>
+                              <td className="px-6 py-4">Enterprise (ilimitado)</td>
+                              <td className="px-6 py-4 font-bold text-red-600">Aún más alto</td>
+                              <td className="px-6 py-4 font-bold text-green-700">A medida</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
                 </section>
               </>
@@ -696,6 +743,7 @@ function App() {
                 onViewCountUpdate={handleViewCountUpdate}
               />
             } />
+            <Route path="/:lang/servicios" element={<Servicios />} />
             <Route path="/admin" element={<Login />} />
             <Route path="/admin/blog" element={
               <ProtectedRoute>
