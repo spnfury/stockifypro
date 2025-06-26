@@ -37,12 +37,8 @@ import { AuthProvider } from './components/auth/AuthProvider';
 import Login from './components/auth/Login';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 import { Article, Category } from './types/article';
-import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
-import LanguageSelector from './components/LanguageSelector';
-import Servicios from './components/Servicios';
 
 function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
-  const { t } = useLanguage();
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
@@ -68,14 +64,14 @@ function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
 
       console.log('Resultado:', result);
       if (result.text === 'OK') {
-        setSubmitStatus({ type: 'success', message: t('contact.submitSuccess') });
+        setSubmitStatus({ type: 'success', message: '¡Gracias! Tu mensaje ha sido enviado correctamente.' });
         formRef.current.reset();
       } else {
         throw new Error('Error al enviar el formulario');
       }
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
-      setSubmitStatus({ type: 'error', message: t('contact.submitError') });
+      setSubmitStatus({ type: 'error', message: 'Lo sentimos, ha ocurrido un error al enviar el mensaje.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -92,9 +88,9 @@ function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
         >
           <X className="h-6 w-6" />
         </button>
-        <h3 className="text-2xl font-bold mb-6">{t('contact.title')}</h3>
+        <h3 className="text-2xl font-bold mb-6">Solicitar Prueba Gratuita de CRM Contrareembolso</h3>
         <p className="text-gray-600 mb-4">
-          {t('contact.description')}
+          Descubre cómo nuestro CRM contrareembolso puede transformar tu negocio con automatización de envíos, gestión de CRM contrareembolso y análisis de estadísticas en tiempo real.
         </p>
         <form 
           ref={formRef}
@@ -103,7 +99,7 @@ function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
           <div className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                {t('contact.name')}
+                Nombre
               </label>
               <input
                 type="text"
@@ -115,7 +111,7 @@ function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                {t('contact.email')}
+                Email
               </label>
               <input
                 type="email"
@@ -127,7 +123,7 @@ function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                {t('contact.message')}
+                Mensaje
               </label>
               <textarea
                 id="message"
@@ -143,7 +139,7 @@ function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
                 disabled={isSubmitting}
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
               >
-                {isSubmitting ? t('common.loading') : t('common.submit')}
+                {isSubmitting ? 'Cargando...' : 'Enviar'}
               </button>
             </div>
             {submitStatus && (
@@ -161,7 +157,6 @@ function ContactForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void
 }
 
 function App() {
-  const { t, language, setLanguage } = useLanguage();
   const [isContactOpen, setIsContactOpen] = useState(false);
   const location = useLocation();
   const [articles, setArticles] = useState<Article[]>(() => {
@@ -177,19 +172,6 @@ function App() {
     }
     return [];
   });
-
-  // Get the current language from the URL
-  const validLangs = ['es', 'en']; // Agrega aquí los idiomas soportados
-  const firstSegment = location.pathname.split('/')[1];
-  const isAdminRoute = firstSegment === 'admin';
-  const currentLang = validLangs.includes(firstSegment) ? firstSegment : language;
-
-  // Update language when URL changes
-  useEffect(() => {
-    if (!isAdminRoute && validLangs.includes(firstSegment) && currentLang !== language) {
-      setLanguage(currentLang);
-    }
-  }, [currentLang, language, setLanguage, firstSegment, validLangs, isAdminRoute]);
 
   // Guardar artículos en localStorage cuando cambien
   useEffect(() => {
@@ -227,11 +209,11 @@ function App() {
 
   // Categorías disponibles
   const categories = [
-    { id: '1', name: 'Gestión de Pedidos', slug: 'gestion-pedidos' },
-    { id: '2', name: 'Automatización', slug: 'automatizacion' },
-    { id: '3', name: 'Integraciones', slug: 'integraciones' },
-    { id: '4', name: 'Tutoriales', slug: 'tutoriales' },
-    { id: '5', name: 'Noticias', slug: 'noticias' }
+    { id: '1', name: 'Gestión de Contrareembolso', slug: 'gestion-contrareembolso' },
+    { id: '2', name: 'Automatización de Contrareembolso', slug: 'automatizacion-contrareembolso' },
+    { id: '3', name: 'Integraciones de Contrareembolso', slug: 'integraciones-contrareembolso' },
+    { id: '4', name: 'Tutoriales de Contrareembolso', slug: 'tutoriales-contrareembolso' },
+    { id: '5', name: 'Noticias de Contrareembolso', slug: 'noticias-contrareembolso' }
   ];
 
   // Filtrar artículos publicados para mostrar en el home y blog
@@ -241,17 +223,17 @@ function App() {
     <AuthProvider>
       <div className="min-h-screen bg-gray-50">
         <Head
-          title={t('meta.title')}
-          description={t('meta.description')}
-          keywords={t('meta.keywords')}
-          ogTitle={t('meta.title')}
-          ogDescription={t('meta.description')}
+          title="CRM Contrareembolso | StockifyPro - Sistema CRM Especializado en Contrareembolso para Ecommerce"
+          description="CRM contrareembolso especializado para ecommerce. Automatiza la gestión de contrareembolso, seguimiento de envíos y cobros. El mejor CRM contrareembolso para tu negocio online."
+          keywords="crm contrareembolso, sistema crm contrareembolso, gestión crm contrareembolso, crm contrareembolso ecommerce, crm contrareembolso online, gestión de crm contrareembolso, automatización crm contrareembolso, cobro crm contrareembolso, crm contrareembolso shopify, crm contrareembolso transportistas, crm contrareembolso automatizado, crm contrareembolso seguro, crm contrareembolso eficiente, crm contrareembolso rentable, crm contrareembolso profesional, software crm contrareembolso"
+          ogTitle="CRM Contrareembolso - El Mejor Sistema CRM de Contrareembolso"
+          ogDescription="Automatiza la gestión de contrareembolso con nuestro CRM contrareembolso. La solución más completa de CRM contrareembolso para tu negocio online."
         />
         <header className="bg-white shadow-sm sticky top-0 z-50">
           <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-20">
               <div className="flex items-center">
-                <Link to={isAdminRoute ? "/" : `/${currentLang}`} className="flex-shrink-0">
+                <Link to="/" className="flex-shrink-0">
                   <img
                     className="h-10 w-auto"
                     src="https://app.stockify.pro/assets/img/logos/logo2024.png"
@@ -260,32 +242,31 @@ function App() {
                 </Link>
                 <div className="hidden md:ml-10 md:flex md:space-x-8">
                   <Link
-                    to={isAdminRoute ? "/servicios" : `/${currentLang}/servicios`}
+                    to="/servicios"
                     className="text-gray-700 hover:text-[#0F172A] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                   >
-                    {t('navigation.services')}
+                    Servicios
                   </Link>
                   <Link
-                    to={isAdminRoute ? "/sobre-nosotros" : `/${currentLang}/sobre-nosotros`}
+                    to="/sobre-nosotros"
                     className="text-gray-700 hover:text-[#0F172A] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                   >
-                    {t('navigation.about')}
+                    Sobre nosotros
                   </Link>
                   <Link
-                    to={isAdminRoute ? "/blog" : `/${currentLang}/blog`}
+                    to="/blog"
                     className="text-gray-700 hover:text-[#0F172A] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                   >
-                    {t('navigation.blog')}
+                    Blog
                   </Link>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <LanguageSelector />
                 <button
                   onClick={() => setIsContactOpen(true)}
                   className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#0F172A] hover:bg-[#1E293B] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0F172A] transition-colors duration-200"
                 >
-                  {t('navigation.contact')}
+                  Contacto
                 </button>
               </div>
             </div>
@@ -294,7 +275,7 @@ function App() {
 
         <main>
           <Routes location={location} key={location.pathname}>
-            <Route path="/:lang" element={
+            <Route path="/" element={
               <>
                 {/* Hero Section */}
                 <section className="pt-32 pb-20">
@@ -306,32 +287,25 @@ function App() {
                         className="h-32 mx-auto mb-8"
                       />
                       <h1 className="text-5xl font-bold text-[#0F172A] mb-6">
-                        {t('hero.title')}
+                        CRM Contrareembolso<br />
+                        Sistema CRM Especializado en Contrareembolso para Ecommerce
                       </h1>
                       <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-                        {t('hero.description')}
+                        CRM contrareembolso especializado para ecommerce. Automatiza la gestión de contrareembolso, seguimiento de envíos y cobros. Plataforma integral de CRM contrareembolso con automatización de envíos, creación de etiquetas de envío, confirmación de pedidos de contrareembolso y análisis de estadísticas de ventas en tiempo real. 100% personalizable según las necesidades específicas de tu negocio de CRM contrareembolso.
                       </p>
                       <div className="flex justify-center gap-4">
                         <button 
                           onClick={() => setIsContactOpen(true)}
                           className="bg-[#0F172A] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#1E293B]"
                         >
-                          {t('hero.cta1')}
+                          Prueba Gratuita de CRM Contrareembolso
                         </button>
-                        <a 
-                          href="https://app.stockify.pro/login"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="border border-[#0F172A] text-[#0F172A] px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#0F172A]/10"
-                        >
-                          {t('hero.cta2')}
-                        </a>
                       </div>
                     </div>
                     <div className="mt-16 space-y-8">
                       <img style={{ maxHeight: "400px" }}
                         src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
-                        alt="Vista previa del Dashboard"
+                        alt="Vista previa del Dashboard de Contrareembolso"
                         className="rounded-xl shadow-xl h-1/2 mx-auto"
                       />
                       <div className="flex justify-center items-center space-x-8">
@@ -365,10 +339,10 @@ function App() {
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                       <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
-                        {t('features.title')}
+                        Todo lo que Necesitas para Gestionar tu CRM Contrareembolso
                       </h2>
                       <p className="text-xl text-gray-600">
-                        {t('features.description')}
+                        La solución más completa para la gestión de CRM contrareembolso, automatización de envíos y análisis de estadísticas. Totalmente adaptable a tus procesos de CRM contrareembolso y flujos de trabajo.
                       </p>
                     </div>
 
@@ -376,13 +350,13 @@ function App() {
                       {[
                         {
                           icon: <ShoppingCart className="h-8 w-8 text-[#0F172A]" />,
-                          title: "Gestión de Pedidos y Contrareembolsos",
-                          description: "Software para automatizar envíos en tiendas online y gestión eficiente de pedidos y devoluciones en ecommerce. Configurable según tus reglas de negocio.",
+                          title: "CRM Contrareembolso Eficiente",
+                          description: "Software especializado en CRM contrareembolso para automatizar envíos en tiendas online y gestión eficiente de CRM contrareembolso. Configurable según tus reglas de negocio de CRM contrareembolso.",
                           benefits: [
-                            "Reducción del 70% en tiempo de gestión",
-                            "Automatización de cobros y confirmación de pedidos",
-                            "Seguimiento en tiempo real y estadísticas de ventas",
-                            "Personalización total de flujos de trabajo"
+                            "Reducción del 70% en tiempo de gestión de CRM contrareembolso",
+                            "Automatización de cobros de CRM contrareembolso y confirmación de pedidos",
+                            "Seguimiento en tiempo real de CRM contrareembolso y estadísticas de ventas",
+                            "Personalización total de flujos de trabajo de CRM contrareembolso"
                           ],
                           link: "/servicios/contrareembolso"
                         },
@@ -421,24 +395,24 @@ function App() {
                         },
                         {
                           icon: <MessageSquareText className="h-8 w-8 text-[#0F172A]" />,
-                          title: "IA para Atención al Cliente",
-                          description: "Sistema de confirmación y atención al cliente con inteligencia artificial.",
+                          title: "Asistente Virtual para CRM Contrareembolso",
+                          description: "Sistema de confirmación y atención al cliente especializado en CRM contrareembolso con inteligencia artificial.",
                           benefits: [
-                            "Respuestas instantáneas",
-                            "Reducción de carga de trabajo",
-                            "Mejora en satisfacción cliente"
+                            "Respuestas instantáneas sobre CRM contrareembolso",
+                            "Reducción de carga de trabajo en gestión de CRM contrareembolso",
+                            "Mejora en satisfacción cliente con CRM contrareembolso"
                           ],
                           link: "/servicios/ia"
                         },
                         {
                           icon: <BarChart4 className="h-8 w-8 text-[#0F172A]" />,
-                          title: "Estadísticas y CRM Avanzado",
-                          description: "Plataforma para analizar estadísticas de ventas en tiempo real con integración sencilla de CRM con Shopify. Dashboard personalizable según tus KPIs.",
+                          title: "Análisis y CRM Contrareembolso Avanzado",
+                          description: "Plataforma para analizar estadísticas de CRM contrareembolso en tiempo real con integración sencilla de CRM con Shopify. Dashboard personalizable según tus KPIs de CRM contrareembolso.",
                           benefits: [
-                            "Informes personalizados y análisis predictivo",
-                            "Gestión de clientes y ventas",
-                            "Estadísticas de ventas en tiempo real",
-                            "Paneles de control adaptables a tus necesidades"
+                            "Informes personalizados de CRM contrareembolso y análisis predictivo",
+                            "Gestión de clientes y ventas de CRM contrareembolso",
+                            "Estadísticas de CRM contrareembolso en tiempo real",
+                            "Paneles de control de CRM contrareembolso adaptables a tus necesidades"
                           ],
                           link: "/servicios/analitica"
                         }
@@ -474,7 +448,7 @@ function App() {
                         onClick={() => setIsContactOpen(true)}
                         className="bg-[#0F172A] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#1E293B]"
                       >
-                        Solicitar Demo Personalizada
+                        Solicitar Demo Personalizada de CRM Contrareembolso
                       </button>
                     </div>
                   </div>
@@ -485,10 +459,10 @@ function App() {
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                       <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
-                        Últimos Artículos del Blog
+                        Últimos Artículos sobre CRM Contrareembolso
                       </h2>
                       <p className="text-xl text-gray-600">
-                        Descubre las últimas novedades, consejos y tendencias en ecommerce
+                        Descubre las últimas novedades, consejos y tendencias en CRM contrareembolso y ecommerce
                       </p>
                     </div>
 
@@ -558,10 +532,10 @@ function App() {
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                       <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
-                        Descubre Stockify en Acción
+                        Descubre Nuestro CRM Contrareembolso en Acción
                       </h2>
                       <p className="text-xl text-gray-600">
-                        Mira cómo nuestra plataforma puede transformar tu negocio
+                        Mira cómo nuestra plataforma de CRM contrareembolso puede transformar tu negocio
                       </p>
                     </div>
 
@@ -570,7 +544,7 @@ function App() {
                         width="100%"
                         height="100%"
                         src="https://www.youtube.com/embed/hQCeq4bMSs0"
-                        title="Stockify Demo"
+                        title="CRM Contrareembolso Demo"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                         className="absolute inset-0"
@@ -582,7 +556,7 @@ function App() {
                         onClick={() => setIsContactOpen(true)}
                         className="bg-[#0F172A] text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-[#1E293B]"
                       >
-                        Solicitar Demo Personalizada
+                        Solicitar Demo Personalizada de CRM Contrareembolso
                       </button>
                     </div>
                   </div>
@@ -593,10 +567,10 @@ function App() {
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-16">
                       <h2 className="text-3xl font-bold text-[#0F172A] mb-4">
-                        Planes Adaptados a Tu Negocio
+                        Planes de CRM Contrareembolso Adaptados a Tu Negocio
                       </h2>
                       <p className="text-xl text-gray-600 mb-8">
-                        Soluciones flexibles que crecen contigo
+                        Soluciones flexibles de CRM contrareembolso que crecen contigo
                       </p>
                     </div>
                     
@@ -605,7 +579,7 @@ function App() {
                         {
                           name: "Basic",
                           price: "199",
-                          limit: "Hasta 10.000 envíos",
+                          limit: "Hasta 10.000 CRM contrareembolsos",
                           features: [
                             "Soporte por email",
                             "Panel de control",
@@ -617,10 +591,10 @@ function App() {
                         {
                           name: "Standard",
                           price: "299",
-                          limit: "Hasta 50.000 envíos",
+                          limit: "Hasta 50.000 CRM contrareembolsos",
                           features: [
                             "Soporte prioritario",
-                            "Estadísticas avanzadas",
+                            "Estadísticas avanzadas de CRM contrareembolso",
                             "Webhooks personalizados"
                           ],
                           isPopular: true,
@@ -629,9 +603,9 @@ function App() {
                         {
                           name: "Premium",
                           price: "399",
-                          limit: "Hasta 100.000 envíos",
+                          limit: "Hasta 100.000 CRM contrareembolsos",
                           features: [
-                            "Integraciones avanzadas",
+                            "Integraciones avanzadas de CRM contrareembolso",
                             "Acceso anticipado a nuevas funciones",
                             "Soporte técnico directo"
                           ],
@@ -641,11 +615,11 @@ function App() {
                         {
                           name: "Enterprise",
                           price: "A medida",
-                          limit: "Envíos ilimitados",
+                          limit: "CRM contrareembolsos ilimitados",
                           features: [
                             "SLA dedicado",
                             "Onboarding personalizado",
-                            "Integraciones a medida",
+                            "Integraciones a medida de CRM contrareembolso",
                             "Soporte 24/7"
                           ],
                           isPopular: false,
@@ -686,9 +660,9 @@ function App() {
                     </div>
                     {/* Comparativa de precios */}
                     <div className="mt-12">
-                      <h3 className="text-2xl font-bold text-[#0F172A] mb-4 text-center">Comparativa con otros softwares</h3>
+                      <h3 className="text-2xl font-bold text-[#0F172A] mb-4 text-center">Comparativa con otros softwares de CRM contrareembolso</h3>
                       <p className="text-center text-gray-600 mb-6">
-                        Otros softwares cobran una media de <span className="font-semibold">0,13 € por envío</span>. Así quedaría el coste mensual equivalente:
+                        Otros softwares cobran una media de <span className="font-semibold">0,13 € por CRM contrareembolso</span>. Así quedaría el coste mensual equivalente:
                       </p>
                       <div className="overflow-x-auto">
                         <table className="min-w-full bg-white rounded-xl shadow-md">
@@ -701,17 +675,17 @@ function App() {
                           </thead>
                           <tbody>
                             <tr>
-                              <td className="px-6 py-4 border-b">Basic (10.000 envíos)</td>
+                              <td className="px-6 py-4 border-b">Basic (10.000 CRM contrareembolsos)</td>
                               <td className="px-6 py-4 border-b font-bold text-red-600">1.300 €/mes</td>
                               <td className="px-6 py-4 border-b font-bold text-green-700">199 €/mes</td>
                             </tr>
                             <tr>
-                              <td className="px-6 py-4 border-b">Standard (50.000 envíos)</td>
+                              <td className="px-6 py-4 border-b">Standard (50.000 CRM contrareembolsos)</td>
                               <td className="px-6 py-4 border-b font-bold text-red-600">6.500 €/mes</td>
                               <td className="px-6 py-4 border-b font-bold text-green-700">299 €/mes</td>
                             </tr>
                             <tr>
-                              <td className="px-6 py-4 border-b">Premium (100.000 envíos)</td>
+                              <td className="px-6 py-4 border-b">Premium (100.000 CRM contrareembolsos)</td>
                               <td className="px-6 py-4 border-b font-bold text-red-600">13.000 €/mes</td>
                               <td className="px-6 py-4 border-b font-bold text-green-700">399 €/mes</td>
                             </tr>
@@ -728,22 +702,21 @@ function App() {
                 </section>
               </>
             } />
-            <Route path="/:lang/servicios/contrareembolso" element={<Contrareembolso />} />
-            <Route path="/:lang/servicios/perfiles" element={<Perfiles />} />
-            <Route path="/:lang/servicios/almacen" element={<Almacen />} />
-            <Route path="/:lang/servicios/transportistas" element={<Transportistas />} />
-            <Route path="/:lang/privacidad" element={<Privacidad />} />
-            <Route path="/:lang/cookies" element={<Cookies />} />
-            <Route path="/:lang/terminos" element={<Terminos />} />
-            <Route path="/:lang/sobre-nosotros" element={<SobreNosotros />} />
-            <Route path="/:lang/blog" element={<BlogList articles={publishedArticles} />} />
-            <Route path="/:lang/blog/:slug" element={
+            <Route path="/servicios/contrareembolso" element={<Contrareembolso />} />
+            <Route path="/servicios/perfiles" element={<Perfiles />} />
+            <Route path="/servicios/almacen" element={<Almacen />} />
+            <Route path="/servicios/transportistas" element={<Transportistas />} />
+            <Route path="/privacidad" element={<Privacidad />} />
+            <Route path="/cookies" element={<Cookies />} />
+            <Route path="/terminos" element={<Terminos />} />
+            <Route path="/sobre-nosotros" element={<SobreNosotros />} />
+            <Route path="/blog" element={<BlogList articles={publishedArticles} />} />
+            <Route path="/blog/:slug" element={
               <BlogPost 
                 article={publishedArticles.find(article => article.slug === location.pathname.split('/').pop()) || publishedArticles[0]} 
                 onViewCountUpdate={handleViewCountUpdate}
               />
             } />
-            <Route path="/:lang/servicios" element={<Servicios />} />
             <Route path="/admin" element={<Login />} />
             <Route path="/admin/blog" element={
               <ProtectedRoute>
@@ -770,13 +743,13 @@ function App() {
                   className="h-8 mb-4"
                 />
                 <p className="text-gray-300">
-                  La solución más completa para la gestión de tu negocio online.
+                  La solución más completa para la gestión de CRM contrareembolso en tu negocio online.
                 </p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold mb-4">Servicios</h3>
+                <h3 className="text-lg font-semibold mb-4">Servicios de CRM Contrareembolso</h3>
                 <ul className="space-y-2">
-                  <li><Link to="/servicios/contrareembolso" className="text-gray-300 hover:text-white">Contrareembolso</Link></li>
+                  <li><Link to="/servicios/contrareembolso" className="text-gray-300 hover:text-white">Sistema de CRM Contrareembolso</Link></li>
                   <li><Link to="/servicios/perfiles" className="text-gray-300 hover:text-white">Perfiles</Link></li>
                   <li><Link to="/servicios/almacen" className="text-gray-300 hover:text-white">Almacén</Link></li>
                   <li><Link to="/servicios/transportistas" className="text-gray-300 hover:text-white">Transportistas</Link></li>
