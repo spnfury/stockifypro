@@ -15,6 +15,8 @@ export default {
     path: resolve(__dirname, 'dist'),
     clean: true,
     publicPath: '/',
+    filename: '[name].[contenthash].js',
+    chunkFilename: '[name].[contenthash].js',
   },
   module: {
     rules: [
@@ -57,6 +59,7 @@ export default {
     new ReactRefreshPlugin(),
     new HtmlPlugin({
       template: './public/index.html',
+      minify: process.env.NODE_ENV === 'production',
     }),
   ],
   devServer: {
@@ -66,6 +69,20 @@ export default {
     static: {
       directory: resolve(__dirname, 'public'),
     },
+    compress: true,
+    open: true,
   },
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
 }; 
