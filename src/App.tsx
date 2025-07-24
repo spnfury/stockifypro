@@ -29,6 +29,7 @@ import Cookies from './pages/Cookies';
 import Terminos from './pages/Terminos';
 import SobreNosotros from './pages/SobreNosotros';
 import Almacen from './pages/Almacen';
+import StockifyPro from './pages/StockifyPro';
 import Head from './components/Head';
 import BlogAdmin from './components/admin/BlogAdmin';
 import BlogList from './components/blog/BlogList';
@@ -258,6 +259,12 @@ function App() {
                     className="text-gray-700 hover:text-[#0F172A] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
                   >
                     Blog
+                  </Link>
+                  <Link
+                    to="/stockify-pro"
+                    className="text-gray-700 hover:text-[#0F172A] px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                  >
+                    Stockify.pro
                   </Link>
                 </div>
               </div>
@@ -710,6 +717,7 @@ function App() {
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/terminos" element={<Terminos />} />
             <Route path="/sobre-nosotros" element={<SobreNosotros />} />
+            <Route path="/stockify-pro" element={<StockifyPro />} />
             <Route path="/blog" element={<BlogList articles={publishedArticles} />} />
             <Route path="/blog/:slug" element={
               <BlogPost 
@@ -759,6 +767,7 @@ function App() {
                 <h3 className="text-lg font-semibold mb-4">Empresa</h3>
                 <ul className="space-y-2">
                   <li><Link to="/sobre-nosotros" className="text-gray-300 hover:text-white">Sobre Nosotros</Link></li>
+                  <li><Link to="/stockify-pro" className="text-gray-300 hover:text-white">Stockify.pro</Link></li>
                   <li><button onClick={() => setIsContactOpen(true)} className="text-gray-300 hover:text-white bg-transparent border-0 p-0 cursor-pointer">Contacto</button></li>
                 </ul>
               </div>
